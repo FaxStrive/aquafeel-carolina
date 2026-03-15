@@ -59,15 +59,15 @@ export default function Header() {
     <>
       {/* Veteran Operated Top Bar */}
       <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "h-0 opacity-0 overflow-hidden" : "h-8"
+        scrolled ? "h-0 opacity-0 overflow-hidden" : "h-10"
       }`}>
-        <div className="h-full bg-[var(--color-primary-dark)]/90 backdrop-blur-sm flex items-center justify-center gap-2 px-4">
-          <Shield className="w-3 h-3 text-brand-cyan shrink-0" />
-          <span className="font-heading text-[9px] sm:text-[10px] md:text-xs text-white/80 tracking-wider uppercase font-medium truncate">
+        <div className="h-full bg-[var(--color-primary-dark)]/90 backdrop-blur-sm flex items-center justify-center gap-3 px-4">
+          <Shield className="w-4 h-4 text-brand-cyan shrink-0" />
+          <span className="font-heading text-[11px] sm:text-sm md:text-[15px] text-white tracking-wider uppercase font-bold truncate">
             {t.common.locallyOwnedBadge}
           </span>
-          <span className="hidden md:inline text-white/30 mx-1 shrink-0">|</span>
-          <span className="hidden md:inline font-body text-[10px] md:text-xs text-white/60 whitespace-nowrap">
+          <span className="hidden md:inline text-white/30 mx-1.5 shrink-0">|</span>
+          <span className="hidden md:inline font-body text-xs md:text-sm text-white/70 whitespace-nowrap">
             {t.common.servingArea}
           </span>
         </div>
@@ -77,7 +77,7 @@ export default function Header() {
         className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "top-0 bg-white/95 backdrop-blur-md shadow-lg shadow-brand-navy/5"
-            : "top-8 bg-transparent"
+            : "top-10 bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

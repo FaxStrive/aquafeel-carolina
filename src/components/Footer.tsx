@@ -64,9 +64,9 @@ export default function Footer() {
               {t.footer.brandDescription}
             </p>
             {/* Veteran Operated Badge */}
-            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 w-fit">
-              <Shield className="w-4 h-4 text-brand-cyan" />
-              <span className="font-heading text-xs text-white/70 tracking-wider uppercase font-medium">
+            <div className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 w-fit">
+              <Shield className="w-5 h-5 text-brand-cyan" />
+              <span className="font-heading text-sm text-white/80 tracking-wider uppercase font-bold">
                 {t.common.locallyOwnedBadge}
               </span>
             </div>

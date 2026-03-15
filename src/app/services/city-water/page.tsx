@@ -515,12 +515,12 @@ export default function CityWaterPage() {
               style={{ scale: imgScale, y: imgY }}
               className="relative rounded-3xl overflow-hidden shadow-2xl shadow-brand-navy/10 border border-[var(--color-border)]"
             >
-              <div className="relative aspect-[16/10] w-full">
+              <div className="relative aspect-[4/3] w-full bg-[var(--color-surface)]">
                 <Image
                   src="/images/client/photo-01.jpeg"
                   alt="Aquafeel City Water Filtration System -- whole-home water treatment unit"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 768px) 100vw, 900px"
                   priority
                 />
