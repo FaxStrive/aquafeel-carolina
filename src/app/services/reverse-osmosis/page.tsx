@@ -416,14 +416,14 @@ function ProductImage() {
             delay: 0.15,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="relative rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl shadow-brand-navy/8 group"
+          className="relative rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl shadow-brand-navy/8 group max-w-lg mx-auto"
         >
           <Image
             src="/images/client/photo-02.jpeg"
             alt="Aquafeel Solutions reverse osmosis under-sink purification system"
             width={1000}
             height={600}
-            className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.03]"
             priority
           />
           {/* Hover overlay */}
