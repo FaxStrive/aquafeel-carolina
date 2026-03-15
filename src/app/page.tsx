@@ -7,6 +7,7 @@ import Process from "@/components/Process";
 import Stats from "@/components/Stats";
 import Testimonials from "@/components/Testimonials";
 import WaterQuality from "@/components/WaterQuality";
+import EWGChecker from "@/components/EWGChecker";
 import SavingsCalculator from "@/components/SavingsCalculator";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
@@ -28,6 +29,7 @@ export default function Home() {
         <Stats />
         <Testimonials />
         <WaterQuality />
+        <EWGChecker />
         <SavingsCalculator />
         <FAQ />
         <CTA />
