@@ -36,10 +36,14 @@ export default function WaterQuality() {
 
   return (
     <section ref={sectionRef} className="relative py-24 sm:py-32 overflow-hidden">
-      {/* Background */}
+      {/* Background with flowing water shapes */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-white" />
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-surface)] via-white to-[var(--color-surface-alt)]" />
+        <svg className="absolute top-0 right-0 w-[600px] h-[400px] opacity-[0.04]" viewBox="0 0 600 400" fill="none">
+          <path d="M600,0 Q400,100 500,200 T600,400" stroke="var(--color-primary)" strokeWidth="80" fill="none" />
+          <path d="M550,0 Q350,150 450,250 T550,400" stroke="var(--color-secondary-light)" strokeWidth="60" fill="none" />
+        </svg>
         <div className="absolute top-[15%] right-[10%] w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,var(--color-primary)_0%,transparent_70%)] opacity-[0.04]" />
         <div className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] rounded-full bg-[radial-gradient(circle,var(--color-secondary-light)_0%,transparent_70%)] opacity-[0.05]" />
       </div>

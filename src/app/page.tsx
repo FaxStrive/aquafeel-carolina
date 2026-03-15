@@ -23,13 +23,13 @@ export default function Home() {
       <main>
         <Hero />
         <TrustBar />
+        <EWGChecker />
         <Services />
         <About />
         <Process />
         <Stats />
         <Testimonials />
         <WaterQuality />
-        <EWGChecker />
         <SavingsCalculator />
         <FAQ />
         <CTA />

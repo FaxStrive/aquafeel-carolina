@@ -64,29 +64,32 @@ export default function Stats() {
 
   return (
     <section ref={sectionRef} className="relative py-20 sm:py-28 overflow-hidden">
-      <div className="absolute inset-0 dark-section" />
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/dark-water.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-[#0f172a]/80" />
 
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
-          className="absolute top-[10%] left-[15%] w-[350px] h-[350px] rounded-full opacity-[0.08] animate-float"
+          className="absolute top-[10%] left-[15%] w-[350px] h-[350px] rounded-full opacity-[0.12] animate-float"
           style={{
             background:
               "radial-gradient(circle, var(--color-secondary-light) 0%, transparent 70%)",
           }}
         />
         <div
-          className="absolute bottom-[15%] right-[10%] w-[400px] h-[400px] rounded-full opacity-[0.06] animate-float-slow"
+          className="absolute bottom-[15%] right-[10%] w-[400px] h-[400px] rounded-full opacity-[0.08] animate-float-slow"
           style={{
             background:
               "radial-gradient(circle, var(--color-accent-light) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute top-[50%] right-[40%] w-[250px] h-[250px] rounded-full opacity-[0.05] animate-float"
-          style={{
-            background:
-              "radial-gradient(circle, var(--color-primary-light) 0%, transparent 70%)",
-            animationDelay: "3s",
           }}
         />
       </div>

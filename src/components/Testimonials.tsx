@@ -64,12 +64,13 @@ export default function Testimonials() {
 
   return (
     <section ref={sectionRef} className="relative py-24 sm:py-32 overflow-hidden">
-      {/* Background */}
+      {/* Background with water surface texture */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[var(--color-surface)]" />
-        <div className="absolute top-[5%] left-[50%] -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,var(--color-primary)_0%,transparent_70%)] opacity-[0.03]" />
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "url(/images/water/water-surface.jpeg)", backgroundSize: "cover", backgroundPosition: "center" }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-surface)] via-transparent to-[var(--color-surface)]" />
+        <div className="absolute top-[5%] left-[50%] -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,var(--color-primary)_0%,transparent_70%)] opacity-[0.04]" />
         <div className="absolute bottom-[10%] left-[10%] w-[300px] h-[300px] rounded-full bg-[radial-gradient(circle,var(--color-secondary-light)_0%,transparent_70%)] opacity-[0.05]" />
-        <div className="absolute top-[30%] right-[5%] w-[250px] h-[250px] rounded-full bg-[radial-gradient(circle,var(--color-accent-light)_0%,transparent_70%)] opacity-[0.04]" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

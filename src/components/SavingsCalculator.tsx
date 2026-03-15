@@ -158,8 +158,10 @@ export default function SavingsCalculator() {
 
   return (
     <section ref={sectionRef} className="relative py-24 sm:py-32 overflow-hidden">
-      {/* Background */}
+      {/* Background with water texture */}
       <div className="absolute inset-0 bg-[var(--color-surface)]" />
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "url(/images/water/water-droplet.jpeg)", backgroundSize: "cover", backgroundPosition: "center" }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-surface)] via-transparent to-[var(--color-surface)] pointer-events-none" />
       <div
         className="absolute top-0 left-[20%] w-[500px] h-[500px] rounded-full opacity-[0.04] pointer-events-none"
         style={{
