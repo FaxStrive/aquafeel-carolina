@@ -73,9 +73,9 @@ export default function Stats() {
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/dark-water.mp4" type="video/mp4" />
+        <source src="/videos/water-flow.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-[#0f172a]/80" />
+      <div className="absolute inset-0 bg-[#0f172a]/75" />
 
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
