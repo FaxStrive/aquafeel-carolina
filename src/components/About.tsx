@@ -39,8 +39,8 @@ export default function About() {
     <section ref={sectionRef} className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-white" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-surface-alt)] via-white to-white" />
+        <div className="absolute inset-0 bg-[var(--color-background)]" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-surface-alt)] via-[var(--color-surface)] to-[var(--color-background)]" />
         <div className="absolute top-[10%] right-0 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,var(--color-primary)_0%,transparent_70%)] opacity-[0.03]" />
         <div className="absolute bottom-0 left-[10%] w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,var(--color-secondary-light)_0%,transparent_70%)] opacity-[0.04]" />
       </div>

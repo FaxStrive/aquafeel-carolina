@@ -76,7 +76,7 @@ export default function Header() {
       <header
         className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "top-0 bg-white/95 backdrop-blur-md shadow-lg shadow-brand-navy/5"
+            ? "top-0 bg-[var(--color-background)]/95 backdrop-blur-md shadow-lg shadow-brand-navy/5"
             : "top-10 bg-transparent"
         }`}
       >
@@ -182,9 +182,7 @@ export default function Header() {
 
             {/* Right side: Language + Phone + CTA */}
             <div className="flex items-center gap-3">
-              <div className="hidden md:block">
-                <LanguageSwitcher scrolled={scrolled} />
-              </div>
+              <LanguageSwitcher scrolled={scrolled} />
 
               <a
                 href="tel:9842123558"
@@ -225,7 +223,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-white pt-28 px-6 overflow-y-auto"
+            className="fixed inset-0 z-40 bg-[var(--color-background)] pt-28 px-6 overflow-y-auto"
           >
             <nav className="flex flex-col gap-4">
               {[

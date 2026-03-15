@@ -84,7 +84,7 @@ export default function ContactPage() {
       icon: Mail,
       label: t.contactPage.cardEmail,
       value: t.common.email,
-      href: "mailto:fahada@aquafeelsolutionsnc.com",
+      href: "mailto:aquafeel@aquafeelcarolina.com",
       action: t.contactPage.cardEmailUs,
     },
     {
@@ -912,7 +912,7 @@ export default function ContactPage() {
                   {t.contactPage.ctaCall}
                 </a>
                 <a
-                  href="mailto:fahada@aquafeelsolutionsnc.com"
+                  href="mailto:aquafeel@aquafeelcarolina.com"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white/10 text-white font-heading font-semibold text-sm hover:bg-white/20 transition-all duration-200 border border-white/20"
                 >
                   <Mail className="w-4 h-4" />

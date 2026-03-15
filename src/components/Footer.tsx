@@ -127,7 +127,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:fahada@aquafeelsolutionsnc.com"
+                  href="mailto:aquafeel@aquafeelcarolina.com"
                   className="flex items-center gap-2 text-white/50 hover:text-brand-cyan text-sm font-body transition-colors duration-200"
                 >
                   <Mail className="w-4 h-4 shrink-0" />

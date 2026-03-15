@@ -14,16 +14,16 @@
     --color-accent: #14b8a6;
     --color-accent-light: #2DD4BF;
     --color-accent-dark: #0d9488;
-    --color-background: #ffffff;
-    --color-surface: #F8FAFF;
-    --color-surface-alt: #EEF2FF;
-    --color-border: #DDE3F4;
+    --color-background: #F5F8FF;
+    --color-surface: #EDF2FF;
+    --color-surface-alt: #E2EAFF;
+    --color-border: #CEDAF0;
     --color-text-primary: #1A1A2E;
     --color-text-secondary: #4A4A6A;
     --color-text-muted: #6B7280;
 
     /* shadcn/ui tokens */
-    --background: 0 0% 100%;
+    --background: 225 100% 98%;
     --foreground: 235 27% 14%;
     --card: 230 100% 99%;
     --card-foreground: 235 27% 14%;

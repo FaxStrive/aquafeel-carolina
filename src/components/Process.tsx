@@ -289,7 +289,7 @@ export default function Process() {
         >
           <path
             d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 L0,0 Z"
-            fill="white"
+            fill="var(--color-background)"
             fillOpacity="0.6"
           />
         </svg>
@@ -303,7 +303,7 @@ export default function Process() {
         >
           <path
             d="M0,40 C240,0 480,80 720,40 C960,0 1200,80 1440,40 L1440,80 L0,80 Z"
-            fill="white"
+            fill="var(--color-background)"
             fillOpacity="0.6"
           />
         </svg>
