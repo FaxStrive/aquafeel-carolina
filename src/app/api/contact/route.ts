@@ -16,6 +16,7 @@ export async function POST(request: Request) {
       ownerRenter,
       occupants,
       message,
+      source,
     } = body;
 
     // Validate required fields
@@ -44,9 +45,9 @@ export async function POST(request: Request) {
       message || "(none)",
     ].join("\n");
 
-    // Option 1: Send to webhook (e.g., GHL, Zapier, Make)
-    const webhookUrl = process.env.CONTACT_WEBHOOK_URL;
-    if (webhookUrl) {
+    // Send to Make.com webhook
+    const webhookUrl = process.env.CONTACT_WEBHOOK_URL || "https://hook.us2.make.com/c1zdm1gsl4aobpln2fsvwgbe7849w5gw";
+    {
       await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -62,7 +63,7 @@ export async function POST(request: Request) {
           ownerRenter,
           occupants,
           message,
-          source: "aquafeel-carolina-website",
+          source: source || "aquafeel-carolina-website",
           submittedAt: new Date().toISOString(),
         }),
       });
@@ -70,7 +71,7 @@ export async function POST(request: Request) {
 
     // Option 2: Send email via Resend (if API key provided)
     const resendKey = process.env.RESEND_API_KEY;
-    const notifyEmail = process.env.NOTIFY_EMAIL || "lahada@aquafeelsolutionsnc.com";
+    const notifyEmail = process.env.NOTIFY_EMAIL || "info@aquafeelcarolina.com";
     if (resendKey) {
       await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -79,7 +80,7 @@ export async function POST(request: Request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Aquafeel Website <noreply@aquafeelsolutionsnc.com>",
+          from: "Aquafeel Website <noreply@aquafeelcarolina.com>",
           to: [notifyEmail],
           subject: `New Consultation Request from ${firstName} ${lastName}`,
           text,

@@ -191,7 +191,7 @@ export default function Hero() {
               className="flex items-center gap-2 text-white/70"
             >
               <badge.icon className="w-5 h-5 text-brand-cyan" />
-              <span className="font-heading text-xs sm:text-sm font-medium tracking-wide">
+              <span className="font-heading text-xs sm:text-sm font-bold tracking-wide">
                 {badge.label}
               </span>
             </motion.div>

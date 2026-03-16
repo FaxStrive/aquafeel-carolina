@@ -111,7 +111,7 @@ function BarChart({
                   }}
                 >
                   <span className="text-white text-[10px] font-heading font-bold whitespace-nowrap">
-                    ${aquafeelCost.toLocaleString()}
+                    Aquafeel
                   </span>
                 </motion.div>
               </div>
@@ -360,8 +360,7 @@ export default function SavingsCalculator() {
                     </AnimatePresence>
                   </div>
                   <p className="font-body text-sm text-[var(--color-text-muted)] mt-1">
-                    {t.calculator.investmentNote} $
-                    {SYSTEM_COST.toLocaleString()}
+                    {t.calculator.savingsSubtitle}
                   </p>
                 </div>
 

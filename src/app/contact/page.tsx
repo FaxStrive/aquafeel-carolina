@@ -84,7 +84,7 @@ export default function ContactPage() {
       icon: Mail,
       label: t.contactPage.cardEmail,
       value: t.common.email,
-      href: "mailto:aquafeel@aquafeelcarolina.com",
+      href: "mailto:info@aquafeelcarolina.com",
       action: t.contactPage.cardEmailUs,
     },
     {
@@ -169,7 +169,7 @@ export default function ContactPage() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, source: "contact-form" }),
       });
       if (!res.ok) throw new Error("Failed to submit");
       setStatus("success");
@@ -912,7 +912,7 @@ export default function ContactPage() {
                   {t.contactPage.ctaCall}
                 </a>
                 <a
-                  href="mailto:aquafeel@aquafeelcarolina.com"
+                  href="mailto:info@aquafeelcarolina.com"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white/10 text-white font-heading font-semibold text-sm hover:bg-white/20 transition-all duration-200 border border-white/20"
                 >
                   <Mail className="w-4 h-4" />

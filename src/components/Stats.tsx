@@ -57,7 +57,7 @@ export default function Stats() {
 
   const stats = [
     { value: 18, suffix: "+", label: t.stats.yearsExperience },
-    { value: 5500, suffix: "+", label: t.stats.familiesServed },
+    { value: 80000, suffix: "+", label: t.stats.systemsSold },
     { value: 4, suffix: "", label: t.stats.nsfCertifications },
     { value: 100, suffix: "%", label: t.stats.satisfactionRate },
   ];
@@ -117,7 +117,7 @@ export default function Stats() {
                   isInView={isInView}
                 />
               </div>
-              <div className="font-heading text-xs sm:text-sm font-semibold tracking-[0.15em] uppercase text-white/50">
+              <div className="font-heading text-xs sm:text-sm font-bold tracking-[0.15em] uppercase text-white/70">
                 {stat.label}
               </div>
             </motion.div>

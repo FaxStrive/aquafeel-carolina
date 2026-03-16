@@ -6,7 +6,7 @@ export default function SchemaMarkup() {
     description:
       "Professional water quality testing and purification solutions for homes and businesses. 18 years of experience. Free in-home water consultations.",
     telephone: "+1-984-212-3558",
-    email: "lahada@aquafeelsolutionsnc.com",
+    email: "info@aquafeelcarolina.com",
     url: "https://aquafeelsolutionsnc.com",
     address: {
       "@type": "PostalAddress",

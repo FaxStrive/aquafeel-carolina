@@ -243,6 +243,7 @@ export default function EWGChecker() {
           city: zip,
           zip: zip,
           message: `EWG Water Report unlock for zip ${zip} - Utility: ${result?.utilityName || "N/A"}`,
+          source: "ewg-checker",
         }),
       });
     } catch {

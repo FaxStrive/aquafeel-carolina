@@ -432,7 +432,7 @@ function PositionCard({
                 </div>
 
                 <a
-                  href="mailto:aquafeel@aquafeelcarolina.com?subject=Application%20-%20Water%20Quality%20Technician"
+                  href="mailto:info@aquafeelcarolina.com?subject=Application%20-%20Water%20Quality%20Technician"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-primary)] text-white font-heading font-semibold text-sm hover:bg-[var(--color-primary-light)] transition-all duration-200 hover:gap-3 group/btn"
                 >
                   {t.careersPage.applyNow}
@@ -714,7 +714,7 @@ function ApplicationCTA() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
             <a
-              href="mailto:aquafeel@aquafeelcarolina.com?subject=Career%20Inquiry"
+              href="mailto:info@aquafeelcarolina.com?subject=Career%20Inquiry"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-[var(--color-accent-light)] text-[var(--color-primary-dark)] font-heading font-bold text-base hover:bg-[var(--color-accent)] transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg shadow-teal-500/20"
             >
               <Mail className="w-5 h-5" />
