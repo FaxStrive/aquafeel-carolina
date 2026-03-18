@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Leaf } from "lucide-react";
 import { useI18n } from "@/lib/i18n/context";
 
 export default function Services() {
@@ -19,10 +19,10 @@ export default function Services() {
       href: "/services/city-water",
     },
     {
-      title: t.services.reverseOsmosis,
-      description: t.services.reverseOsmosisDesc,
-      image: "/images/client/photo-02.jpeg",
-      href: "/services/reverse-osmosis",
+      title: t.services.wellWater,
+      description: t.services.wellWaterDesc,
+      image: "/images/client/product-install.jpg",
+      href: "/services/well-water",
     },
     {
       title: t.services.alkalineRo,
@@ -63,9 +63,22 @@ export default function Services() {
           <p className="mt-4 max-w-2xl mx-auto text-[var(--color-text-secondary)] text-lg font-body">
             {t.services.description}
           </p>
+
+          {/* Organic Products badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-full bg-green-50 border border-green-200"
+          >
+            <Leaf className="w-4 h-4 text-green-600" />
+            <span className="font-heading font-semibold text-sm text-green-700">
+              {t.services.organicBadge}
+            </span>
+          </motion.div>
         </motion.div>
 
-        {/* Service Cards */}
+        {/* Service Cards - 3-column grid */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8 -mt-2">
           {services.map((service, i) => (
             <ServiceCard
@@ -107,7 +120,7 @@ function ServiceCard({
       style={{ perspective: "800px" }}
     >
       {/* Image */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-56 sm:h-64 overflow-hidden">
         <Image
           src={service.image}
           alt={service.title}
@@ -122,7 +135,7 @@ function ServiceCard({
         <h3 className="font-heading font-bold text-xl text-[var(--color-text-primary)] mb-3">
           {service.title}
         </h3>
-        <p className="text-[var(--color-text-secondary)] text-base font-body leading-relaxed mb-5">
+        <p className="text-[var(--color-text-secondary)] text-sm sm:text-base font-body leading-relaxed mb-5">
           {service.description}
         </p>
         <a
