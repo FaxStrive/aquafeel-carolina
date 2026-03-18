@@ -657,58 +657,6 @@ export default function WellWaterPage() {
         {/* ─── IMAGE BREAK: SYSTEM TECHNOLOGY ─── */}
         <ImageBreak src="/images/water/family-outdoor.jpeg" alt="Family enjoying outdoors" text="Clean Water for the Whole Family" />
 
-        {/* ─── PRODUCT IMAGE ─── */}
-        <section ref={imageRef} className="relative py-20 md:py-28">
-          {/* Background */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(6,182,212,0.03) 0%, transparent 70%)",
-              }}
-            />
-          </div>
-
-          <div className="relative max-w-5xl mx-auto px-6">
-            <AnimatedSection className="text-center mb-12">
-              <motion.h2
-                variants={fadeUp}
-                transition={{ duration: 0.6 }}
-                className="font-heading text-[var(--color-text-primary)]"
-                style={{ fontSize: "var(--text-h2)" }}
-              >
-                {p.systemHeadline}
-              </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                transition={{ duration: 0.5 }}
-                className="mt-4 max-w-xl mx-auto font-body text-[var(--color-text-secondary)] text-lg"
-              >
-                {p.systemDescription}
-              </motion.p>
-            </AnimatedSection>
-
-            <motion.div
-              style={{ scale: imgScale, y: imgY }}
-              className="relative rounded-3xl overflow-hidden shadow-2xl shadow-brand-navy/10 border border-[var(--color-border)]"
-            >
-              <div className="relative aspect-[16/10] w-full">
-                <Image
-                  src="/images/client/photo-04.jpeg"
-                  alt={p.systemImageAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 900px"
-                  priority
-                />
-              </div>
-              {/* Overlay accent */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary-dark)]/10 to-transparent pointer-events-none" />
-            </motion.div>
-          </div>
-        </section>
-
         {/* ─── BENEFITS GRID ─── */}
         <section className="relative py-20 md:py-28">
           {/* Background */}
