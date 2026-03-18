@@ -4,14 +4,17 @@ import AboutContent from "./AboutContent";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "About Aquafeel Solutions | 18 Years of Clean Water Excellence",
+  title: "About Us | 18 Years Clean Water",
   description:
-    "Learn about Aquafeel Solutions — 18 years helping families and businesses understand and improve their water quality. NSF certified, BBB accredited, nationwide service.",
+    "18 years of clean water excellence in NC and SC. NSF-certified, BBB A+ accredited water treatment specialists committed to educating families. Free in-home consultations available.",
+  alternates: { canonical: 'https://aquafeelcarolina.com/about' },
   openGraph: {
-    title: "About Aquafeel Solutions | Your Clean Water Heroes",
+    title: "About Aquafeel Solutions Carolina",
     description:
-      "Founded in 2008, Aquafeel Solutions provides professional water testing, education, and customized treatment solutions for homes and businesses nationwide.",
+      "Founded in 2006, Aquafeel Solutions Carolina has helped thousands of NC and SC families achieve healthier water through testing, education, and NSF-certified purification systems.",
     type: "website",
+    url: "https://aquafeelcarolina.com/about",
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'About Aquafeel Solutions Carolina - 18 Years of Clean Water' }],
   },
 };
 

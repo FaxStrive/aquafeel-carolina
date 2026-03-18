@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, DM_Sans } from "next/font/google";
-import SchemaMarkup from "@/components/SchemaMarkup";
+import SchemaMarkup from "@/components/seo/schema-markup";
 import { I18nProvider } from "@/lib/i18n/context";
 import "./globals.css";
 
@@ -79,11 +79,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <SchemaMarkup />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/images/hero-bg.jpg" />
       </head>
       <body
         className={`${montserrat.variable} ${dmSans.variable} antialiased`}
       >
+        <SchemaMarkup />
         <I18nProvider>{children}</I18nProvider>
       </body>
     </html>

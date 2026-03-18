@@ -28,6 +28,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useI18n } from "@/lib/i18n/context";
 
+
+
 /* ─────────────────── HERO ─────────────────── */
 
 function WarrantyHero() {
@@ -42,6 +44,10 @@ function WarrantyHero() {
 
   return (
     <section ref={ref} className="relative min-h-[420px] flex items-center overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What water treatment services does Aquafeel Solutions Carolina offer?","acceptedAnswer":{"@type":"Answer","text":"Aquafeel Solutions Carolina offers water filtration, water softeners, reverse osmosis systems, and water testing in your area."}},{"@type":"Question","name":"How do I know if I need a water softener?","acceptedAnswer":{"@type":"Answer","text":"Signs you need a water softener include hard water deposits on faucets, dry skin after bathing, and spots on dishes. Contact us for a free water test."}},{"@type":"Question","name":"How long does installation take?","acceptedAnswer":{"@type":"Answer","text":"Most water treatment system installations take 2–4 hours. Our technicians work efficiently to minimize disruption to your home."}}]}) }}
+      />
       {/* Gradient background */}
       <motion.div
         style={{ y: bgY }}

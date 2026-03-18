@@ -18,6 +18,17 @@ import SocialProofToasts from "@/components/SocialProofToasts";
 import ScrollCTA from "@/components/ScrollCTA";
 import Footer from "@/components/Footer";
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Aquafeel Solutions Carolina | Free Water Testing NC & SC',
+  },
+  description: 'Free in-home water testing for NC and SC families. NSF-certified whole-house filtration, water softeners, and alkaline RO systems. 18+ years experience. BBB A+ rated. Schedule your free water test today.',
+  alternates: { canonical: 'https://aquafeelcarolina.com/' },
+};
+
+
 export const dynamic = "force-dynamic";
 
 export default function Home() {

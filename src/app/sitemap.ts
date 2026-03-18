@@ -1,56 +1,93 @@
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://aquafeelsolutionsnc.com";
+const BASE_URL = "https://aquafeelcarolina.com";
+const LAST_MODIFIED = new Date("2025-01-15");
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: BASE_URL,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/services`,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/services/city-water`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/services/well-water`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/services/alkaline-ro`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/services/water-testing`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/services/commercial`,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services/city-water`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/about`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/contact`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${BASE_URL}/financing`,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/services/reverse-osmosis`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/warranty`,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/services/alkaline-ro`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/gallery`,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.65,
     },
     {
-      url: `${baseUrl}/services/water-testing`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/careers`,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.6,
     },
   ];
 }

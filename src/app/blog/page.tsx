@@ -23,6 +23,8 @@ import Footer from "@/components/Footer";
 import { blogPosts, type BlogPost } from "@/lib/blog/posts";
 import { useI18n } from "@/lib/i18n/context";
 
+
+
 /* ─────────────────── TYPES ─────────────────── */
 
 type CategoryFilter = "All" | "News" | "Tips" | "Fun Facts";

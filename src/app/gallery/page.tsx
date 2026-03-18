@@ -22,6 +22,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useI18n } from "@/lib/i18n/context";
 
+
+
 /* ─────────────────── TYPES ─────────────────── */
 
 type Category = "all" | "installations" | "before-after" | "products" | "team";

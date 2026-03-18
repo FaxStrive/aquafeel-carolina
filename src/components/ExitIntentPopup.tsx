@@ -90,9 +90,9 @@ export default function ExitIntentPopup() {
                   </span>
                 </div>
 
-                <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-[var(--color-text-primary)] leading-tight mb-3">
+                <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-[var(--color-text-primary)] leading-tight mb-3">
                   Do You Know What{"'"}s In Your Water?
-                </h3>
+                </h2>
 
                 <p className="font-body text-[var(--color-text-secondary)] leading-relaxed mb-6">
                   Most Carolina families are drinking water with contaminants they

@@ -70,9 +70,37 @@ export default function WaterQuality() {
               {t.waterQuality.headline}
             </h2>
 
-            <p className="text-[var(--color-text-secondary)] text-lg font-body leading-relaxed mb-8">
+            <p className="text-[var(--color-text-secondary)] text-lg font-body leading-relaxed mb-6">
               {t.waterQuality.description}
             </p>
+
+            {/* Cited statistics */}
+            <div className="space-y-3 mb-8">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="flex items-start gap-3 p-4 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)]"
+              >
+                <span className="font-heading font-extrabold text-2xl text-[var(--color-secondary)] shrink-0">85%</span>
+                <p className="text-sm font-body text-[var(--color-text-secondary)] leading-snug">
+                  of U.S. homes have hard water, including most of NC and SC.{" "}
+                  <span className="text-[var(--color-text-muted)]">(U.S. Geological Survey, 2024)</span>
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="flex items-start gap-3 p-4 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)]"
+              >
+                <span className="font-heading font-extrabold text-2xl text-[var(--color-accent)] shrink-0">$800</span>
+                <p className="text-sm font-body text-[var(--color-text-secondary)] leading-snug">
+                  per year lost to energy waste and appliance damage caused by hard water scale buildup.{" "}
+                  <span className="text-[var(--color-text-muted)]">(U.S. DOE, 2023)</span>
+                </p>
+              </motion.div>
+            </div>
 
             {/* Contaminant list */}
             <div className="space-y-4">

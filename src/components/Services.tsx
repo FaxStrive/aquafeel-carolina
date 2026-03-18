@@ -91,6 +91,64 @@ export default function Services() {
             />
           ))}
         </div>
+
+        {/* System Comparison Table */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mt-16 sm:mt-20"
+        >
+          <div className="text-center mb-8">
+            <h2
+              className="font-heading font-bold text-[var(--color-text-primary)] text-2xl sm:text-3xl mb-2"
+            >
+              Which System Is Right for You?
+            </h2>
+            <p className="font-body text-[var(--color-text-secondary)] max-w-xl mx-auto">
+              Compare our most popular water treatment systems side by side.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-[var(--color-border)] shadow-md">
+            <table className="w-full min-w-[640px] text-sm font-body">
+              <thead>
+                <tr className="bg-[var(--color-primary-dark)] text-white">
+                  <th className="px-5 py-4 text-left font-heading font-semibold">Feature</th>
+                  <th className="px-5 py-4 text-center font-heading font-semibold">Water Softener</th>
+                  <th className="px-5 py-4 text-center font-heading font-semibold bg-[var(--color-secondary)]/20">Whole-House Filter</th>
+                  <th className="px-5 py-4 text-center font-heading font-semibold">Alkaline RO</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Treats every faucet", "Yes", "Yes", "Kitchen tap only"],
+                  ["Removes hardness minerals", "Yes", "Partial", "Yes"],
+                  ["Removes chlorine & chemicals", "No", "Yes", "Yes (99%)"],
+                  ["Removes lead & heavy metals", "No", "Yes", "Yes (99%)"],
+                  ["Removes bacteria & viruses", "No", "Partial", "Partial + UV add-on"],
+                  ["pH-balanced drinking water", "No", "No", "Yes (8–9.5 pH)"],
+                  ["Protects pipes & appliances", "Yes", "Yes", "No"],
+                  ["Salt required", "Yes", "No", "No"],
+                  ["Best for", "Hard water scale", "City water chemicals", "Purest drinking water"],
+                ].map(([feature, softener, filter, ro], i) => (
+                  <tr
+                    key={i}
+                    className={`border-t border-[var(--color-border)] ${i % 2 === 0 ? "bg-white" : "bg-[var(--color-surface)]"}`}
+                  >
+                    <td className="px-5 py-3.5 font-heading font-semibold text-[var(--color-text-primary)]">{feature}</td>
+                    <td className="px-5 py-3.5 text-center text-[var(--color-text-secondary)]">{softener}</td>
+                    <td className="px-5 py-3.5 text-center text-[var(--color-text-secondary)] bg-[var(--color-secondary)]/5 font-medium">{filter}</td>
+                    <td className="px-5 py-3.5 text-center text-[var(--color-text-secondary)]">{ro}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-center text-xs text-[var(--color-text-muted)] font-body">
+            Not sure which system you need? Our free water test identifies the exact solution for your home.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
