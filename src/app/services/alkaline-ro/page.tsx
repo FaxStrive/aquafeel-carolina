@@ -36,7 +36,8 @@ import { useI18n } from "@/lib/i18n/context";
 
 function AlkalineHero() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -190,7 +191,8 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
 
 function Overview() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -297,7 +299,8 @@ function Overview() {
 
 function HowItWorks() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const { scrollYProgress } = useScroll({
@@ -399,7 +402,8 @@ function HowItWorks() {
 
 function ProductImage() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
   const { scrollYProgress } = useScroll({
@@ -452,7 +456,8 @@ function ProductImage() {
 
 function AlkalineDetail() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -505,7 +510,8 @@ function AlkalineDetail() {
 
 function ContaminantsAndSpecs() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -571,7 +577,8 @@ function ContaminantsAndSpecs() {
 
 function HealthBenefits() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -602,7 +609,8 @@ function HealthBenefits() {
 
 function BenefitsGrid() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -777,7 +785,8 @@ function FAQItem({
 
 function FAQSection() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -831,7 +840,8 @@ function FAQSection() {
 
 function CTASection() {
   const { t } = useI18n();
-  const p = t.alkalineRoPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.alkalineRoPage as any;
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 

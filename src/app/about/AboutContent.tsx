@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -99,6 +99,101 @@ function ParallaxImage({
   );
 }
 
+
+/* ─────────────────── TEAM MEMBER CARD ─────────────────── */
+
+function TeamMemberCard({
+  image,
+  name,
+  role,
+  badge,
+  shortBio,
+  fullBio,
+  delay,
+}: {
+  image: string;
+  name: string;
+  role: string;
+  badge?: string;
+  shortBio: string;
+  fullBio: string;
+  delay: number;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative"
+    >
+      {/* Card */}
+      <div className="relative rounded-2xl border border-[var(--color-border)] bg-white overflow-hidden hover:shadow-xl hover:shadow-brand-navy/8 transition-all duration-500 hover:-translate-y-1">
+        {/* Photo */}
+        <div className="relative aspect-[3/4] overflow-hidden">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          />
+          {/* Gradient overlay at bottom for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary-dark)]/70 via-transparent to-transparent" />
+
+          {/* Badge (veteran status) */}
+          {badge && (
+            <div className="absolute top-4 left-4">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm text-[var(--color-primary-dark)] font-heading font-bold text-[11px] uppercase tracking-wider shadow-lg">
+                {badge}
+              </span>
+            </div>
+          )}
+
+          {/* Name + role overlaid on photo */}
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            <h3 className="font-heading font-bold text-lg text-white leading-tight">
+              {name}
+            </h3>
+            <p className="font-body text-white/80 text-sm mt-0.5">
+              {role}
+            </p>
+          </div>
+        </div>
+
+        {/* Bio content */}
+        <div className="p-5">
+          <p className="font-body text-[var(--color-text-secondary)] text-sm leading-relaxed">
+            {shortBio}
+          </p>
+
+          {/* Expandable full bio */}
+          <motion.div
+            initial={false}
+            animate={{ height: expanded ? "auto" : 0, opacity: expanded ? 1 : 0 }}
+            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="overflow-hidden"
+          >
+            <p className="font-body text-[var(--color-text-secondary)] text-sm leading-relaxed mt-3 pt-3 border-t border-[var(--color-border)]">
+              {fullBio}
+            </p>
+          </motion.div>
+
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="mt-3 font-heading font-semibold text-xs uppercase tracking-wider text-[var(--color-secondary)] hover:text-[var(--color-primary)] transition-colors duration-200"
+          >
+            {expanded ? "Show Less" : "Read More"}
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 /* ================================================================== */
 /*                          ABOUT PAGE                                 */
@@ -766,6 +861,94 @@ export default function AboutContent() {
                 />
               </motion.div>
             </motion.div>
+          </div>
+        </div>
+      </RevealSection>
+
+      {/* ═══════════ MEET THE TEAM ═══════════ */}
+      <RevealSection className="relative py-24 md:py-32 overflow-hidden">
+        {/* BG */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, white 0%, var(--color-surface) 30%, var(--color-surface) 70%, white 100%)",
+            }}
+          />
+          <div className="absolute top-[10%] right-[10%] w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(6,182,212,0.04)_0%,transparent_70%)]" />
+          <div className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(37,39,114,0.03)_0%,transparent_70%)]" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section header */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-16 md:mb-20"
+          >
+            <motion.span
+              variants={staggerItem}
+              className="inline-block font-heading font-bold text-xs uppercase tracking-[0.2em] text-[var(--color-secondary)] mb-3"
+            >
+              Meet the Water Crew
+            </motion.span>
+            <motion.h2
+              variants={staggerItem}
+              className="font-heading font-extrabold leading-tight"
+              style={{ fontSize: "var(--text-h2)" }}
+            >
+              The People Behind{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]">
+                Your Clean Water
+              </span>
+            </motion.h2>
+            <motion.p
+              variants={staggerItem}
+              className="mt-5 max-w-2xl mx-auto font-body text-[var(--color-text-secondary)] text-lg leading-relaxed"
+            >
+              Our team of certified Water Quality Analysts and veterans brings passion, expertise, and genuine care to every home we serve.
+            </motion.p>
+          </motion.div>
+
+          {/* Team grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <TeamMemberCard
+              image="/images/team/casandra.jpeg"
+              name="Casandra Buenaventura"
+              role="Water Quality Analyst"
+              shortBio="Casandra is a proud boy mom who brings warmth, personality, and attention to detail to every client interaction."
+              fullBio="She enjoys binge-watching TV series, pottery, and home decoration. What Casandra enjoys most about Aquafeel is knowing she's helping families in the community improve their quality of life by giving them cleaner, safer water in their homes."
+              delay={0}
+            />
+            <TeamMemberCard
+              image="/images/team/fahad.jpeg"
+              name="Fahad Al-Jarboua"
+              role="Water Quality Analyst"
+              badge="Army Veteran"
+              shortBio="Fahad is an Army veteran, proud girl dad, and dedicated Water Quality Analyst since 2024."
+              fullBio="He enjoys spending his free time doing woodworking and teaching, combining creativity with education. At Aquafeel, Fahad is passionate about informing and educating his community about water quality and safety. His mission is to help families better understand their water and provide solutions that protect their homes and loved ones."
+              delay={0.1}
+            />
+            <TeamMemberCard
+              image="/images/team/glenn.jpeg"
+              name="Glenn Guthrie"
+              role="Water Quality Analyst"
+              badge="Marine Veteran"
+              shortBio="Glenn is a Marine Corps veteran, husband, and father who brings both discipline and craftsmanship to everything he does."
+              fullBio="Outside of work, Glenn enjoys creating custom Damascus knives and cooking. Certified as a Water Quality Analyst since 2024, Glenn loves showing people what's really going on with their H2O and helping them fix those issues with affordable and effective solutions."
+              delay={0.2}
+            />
+            <TeamMemberCard
+              image="/images/team/carlos.jpeg"
+              name="Carlos Buenaventura"
+              role="Area Director"
+              shortBio="Carlos is a husband and father with experience as a Water Quality Analyst since 2016, bringing years of knowledge to the team."
+              fullBio="When he's not working with clients, he enjoys traveling and spending quality time with his family. What he enjoys most about Aquafeel is seeing firsthand how the systems have improved the quality of water in his own home, and being able to help other families achieve the same peace of mind. Carlos is passionate about helping households across multiple states better understand their water and providing solutions that allow families to enjoy cleaner, safer water every day."
+              delay={0.3}
+            />
           </div>
         </div>
       </RevealSection>
