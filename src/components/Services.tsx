@@ -22,7 +22,7 @@ export default function Services() {
     {
       title: t.services.wellWater,
       description: t.services.wellWaterDesc,
-      image: "/images/client/product-install.jpg",
+      image: "/images/products/well-water-system.jpg",
       href: "/services/well-water",
     },
     {
