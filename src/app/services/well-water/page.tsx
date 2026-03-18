@@ -173,14 +173,6 @@ export default function WellWaterPage() {
   const heroY = useTransform(heroScroll, [0, 1], [0, 120]);
   const heroOpacity = useTransform(heroScroll, [0, 0.7], [1, 0]);
 
-  const imageRef = useRef(null);
-  const { scrollYProgress: imgScroll } = useScroll({
-    target: imageRef,
-    offset: ["start end", "end start"],
-  });
-  const imgScale = useTransform(imgScroll, [0, 0.5], [0.92, 1]);
-  const imgY = useTransform(imgScroll, [0, 1], [40, -40]);
-
   const problemIcons = [Pipette, Wind, ThermometerSun, Bug, Gauge, AlertTriangle];
   const wellProblems = [
     { icon: problemIcons[0], title: p.problem1Title, description: p.problem1Desc, solution: p.problem1Solution },
