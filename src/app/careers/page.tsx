@@ -273,8 +273,8 @@ function CompanyCulture() {
           >
             <div className="relative rounded-2xl overflow-hidden group">
               <Image
-                src="/images/client/photo-10.jpeg"
-                alt="Aquafeel Solutions team at work"
+                src="/images/client/team-awards.jpg"
+                alt="Aquafeel Solutions team celebrating"
                 width={600}
                 height={450}
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"

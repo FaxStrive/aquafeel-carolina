@@ -207,7 +207,7 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white text-center max-w-2xl leading-tight"
+          className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white text-center max-w-2xl leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]"
         >
           {text}
         </motion.p>
