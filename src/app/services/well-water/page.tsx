@@ -580,7 +580,7 @@ export default function WellWaterPage() {
         </section>
 
         {/* ─── IMAGE BREAK: FAMILY ─── */}
-        <ImageBreak src="/images/water/family-outdoor.jpeg" alt="Family enjoying outdoors" text="Clean Water for the Whole Family" position="object-top" />
+        <ImageBreak src="/images/water/family-water-kitchen.jpeg" alt="Family enjoying clean water in kitchen" text="Clean Water for the Whole Family" />
 
         {/* ─── BENEFITS GRID ─── */}
         <section className="relative py-20 md:py-28">

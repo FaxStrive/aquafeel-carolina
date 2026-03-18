@@ -428,7 +428,7 @@ export default function CityWaterPage() {
         </section>
 
         {/* ─── IMAGE BREAK: FAUCET ─── */}
-        <ImageBreak src="/images/water/clean-faucet.jpeg" alt="Clean filtered faucet water" text="Pure Water From Every Faucet" position="object-bottom" />
+        <ImageBreak src="/images/water/tap-filling-glass.jpeg" alt="Filling a glass of water from kitchen tap" text="Pure Water From Every Faucet" />
 
         {/* ─── HOW IT WORKS ─── */}
         <section className="relative py-20 md:py-28">
