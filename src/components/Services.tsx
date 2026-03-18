@@ -7,7 +7,8 @@ import { ArrowRight, Leaf } from "lucide-react";
 import { useI18n } from "@/lib/i18n/context";
 
 export default function Services() {
-  const { t } = useI18n();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { t } = useI18n() as any;
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
