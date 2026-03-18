@@ -162,7 +162,8 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
 
 export default function WellWaterPage() {
   const { t } = useI18n();
-  const p = t.wellWaterPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.wellWaterPage as any;
 
   const heroRef = useRef(null);
   const { scrollYProgress: heroScroll } = useScroll({

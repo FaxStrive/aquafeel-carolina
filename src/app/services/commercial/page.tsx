@@ -157,7 +157,8 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
 
 export default function CommercialPage() {
   const { t } = useI18n();
-  const p = t.commercialPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.commercialPage as any;
 
   const heroRef = useRef(null);
   const { scrollYProgress: heroScroll } = useScroll({

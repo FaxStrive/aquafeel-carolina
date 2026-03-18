@@ -36,7 +36,8 @@ import { useI18n } from "@/lib/i18n/context";
 
 function Hero() {
   const { t } = useI18n();
-  const p = t.waterTestingPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.waterTestingPage as any;
 
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -219,7 +220,8 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
 
 function Overview() {
   const { t } = useI18n();
-  const p = t.waterTestingPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.waterTestingPage as any;
 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -324,7 +326,8 @@ function Overview() {
 
 function ContaminantsGrid() {
   const { t } = useI18n();
-  const p = t.waterTestingPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.waterTestingPage as any;
 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
@@ -408,7 +411,8 @@ function ContaminantsGrid() {
 
 function Process() {
   const { t } = useI18n();
-  const p = t.waterTestingPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.waterTestingPage as any;
 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
@@ -545,7 +549,8 @@ function FAQItem({
 
 function FAQ() {
   const { t } = useI18n();
-  const p = t.waterTestingPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.waterTestingPage as any;
 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -603,7 +608,8 @@ function FAQ() {
 
 function CTA() {
   const { t } = useI18n();
-  const p = t.waterTestingPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.waterTestingPage as any;
 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
