@@ -137,7 +137,7 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
       <motion.div style={{ y }} className="absolute inset-0 -inset-y-[10%]">
         <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/50 via-[var(--color-primary-dark)]/20 to-[var(--color-primary-dark)]/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/70 via-[var(--color-primary-dark)]/50 to-[var(--color-primary-dark)]/70" />
       <div className="relative z-10 h-full flex items-center justify-center px-6">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -223,7 +223,7 @@ export default function CommercialPage() {
           {/* Video background */}
           <div className="absolute inset-0 overflow-hidden">
             <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-              <source src="/videos/hero-water.mp4" type="video/mp4" />
+              <source src="/videos/water-waves.mp4" type="video/mp4" />
             </video>
             <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(23,23,81,0.82) 0%, rgba(30,58,95,0.75) 50%, rgba(14,116,144,0.7) 100%)" }} />
           </div>

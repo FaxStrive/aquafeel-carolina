@@ -55,7 +55,7 @@ function Hero() {
       {/* Video + Gradient background */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 -top-20">
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-          <source src="/videos/dark-water.mp4" type="video/mp4" />
+          <source src="/videos/water-droplet.mp4" type="video/mp4" />
         </video>
         <div
           className="absolute inset-0"
@@ -200,7 +200,7 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
       <motion.div style={{ y }} className="absolute inset-0 -inset-y-[10%]">
         <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/50 via-[var(--color-primary-dark)]/20 to-[var(--color-primary-dark)]/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/70 via-[var(--color-primary-dark)]/50 to-[var(--color-primary-dark)]/70" />
       <div className="relative z-10 h-full flex items-center justify-center px-6">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
