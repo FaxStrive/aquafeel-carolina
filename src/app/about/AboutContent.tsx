@@ -270,7 +270,7 @@ export default function AboutContent() {
       {/* ═══════════ HERO ═══════════ */}
       <section
         ref={heroRef}
-        className="relative min-h-[55vh] md:min-h-[50vh] flex items-end overflow-hidden"
+        className="relative min-h-[65vh] md:min-h-[60vh] flex items-end overflow-hidden"
         style={{
           background:
             "linear-gradient(145deg, #171751 0%, #252772 35%, #0e7490 75%, #06b6d4 100%)",
@@ -305,7 +305,7 @@ export default function AboutContent() {
         />
 
         {/* Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 pt-32 md:pt-36">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 pt-32 md:pt-36">
           {/* Breadcrumb */}
           <motion.nav
             initial={{ opacity: 0, x: -16 }}
