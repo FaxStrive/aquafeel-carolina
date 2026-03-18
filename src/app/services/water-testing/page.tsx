@@ -51,13 +51,16 @@ function Hero() {
       ref={ref}
       className="relative min-h-[460px] flex items-center overflow-hidden"
     >
-      {/* Gradient background */}
+      {/* Video + Gradient background */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 -top-20">
+        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+          <source src="/videos/dark-water.mp4" type="video/mp4" />
+        </video>
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, #171751 0%, #1a1a4e 40%, #06b6d4 100%)",
+              "linear-gradient(135deg, rgba(23,23,81,0.82) 0%, rgba(26,26,78,0.78) 40%, rgba(6,182,212,0.75) 100%)",
           }}
         />
         {/* Animated orbs */}
@@ -131,10 +134,6 @@ function Hero() {
             {p.breadcrumbHome}
           </Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <Link href="/services" className="hover:text-white/90 transition-colors">
-            {p.breadcrumbServices}
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
           <span className="text-white/90">{p.breadcrumbWaterTesting}</span>
         </motion.nav>
 
@@ -184,6 +183,34 @@ function Hero() {
           </a>
         </motion.div>
       </motion.div>
+    </section>
+  );
+}
+
+/* ─────────────────── IMAGE BREAK ─────────────────── */
+
+function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+
+  return (
+    <section ref={ref} className="relative h-[45vh] min-h-[300px] overflow-hidden">
+      <motion.div style={{ y }} className="absolute inset-0 -inset-y-[10%]">
+        <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/50 via-[var(--color-primary-dark)]/20 to-[var(--color-primary-dark)]/50" />
+      <div className="relative z-10 h-full flex items-center justify-center px-6">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white text-center max-w-2xl leading-tight"
+        >
+          {text}
+        </motion.p>
+      </div>
     </section>
   );
 }
@@ -591,6 +618,7 @@ function CTA() {
               "linear-gradient(135deg, #171751 0%, #252772 50%, #0e7490 100%)",
           }}
         />
+        <Image src="/images/water/water-surface.jpeg" alt="" fill className="object-cover opacity-15 mix-blend-luminosity" />
         <motion.div
           animate={{ scale: [1, 1.15, 1], opacity: [0.08, 0.15, 0.08] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -652,8 +680,10 @@ export default function WaterTestingPage() {
       <main>
         <Hero />
         <Overview />
+        <ImageBreak src="/images/water/water-droplet.jpeg" alt="Crystal clear water droplet" text="Know Exactly What Is in Your Water" />
         <ContaminantsGrid />
         <Process />
+        <ImageBreak src="/images/water/girl-examining.jpeg" alt="Examining water quality" text="Results You Can Trust" />
         <FAQ />
         <CTA />
       </main>

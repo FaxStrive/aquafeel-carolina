@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
     category: "Tips",
     date: "2026-03-10",
     readTime: "5 min read",
-    image: "/images/client/photo-05.jpeg",
+    image: "/images/blog/water-testing.jpeg",
     author: "Aquafeel Team",
   },
   {
@@ -71,7 +71,7 @@ export const blogPosts: BlogPost[] = [
     category: "News",
     date: "2026-03-03",
     readTime: "6 min read",
-    image: "/images/client/photo-04.jpeg",
+    image: "/images/blog/water-ripples.jpeg",
     author: "Aquafeel Team",
   },
   {
@@ -99,7 +99,7 @@ export const blogPosts: BlogPost[] = [
     category: "Fun Facts",
     date: "2026-02-24",
     readTime: "4 min read",
-    image: "/images/client/photo-06.jpeg",
+    image: "/images/blog/family-drinking.jpeg",
     author: "Aquafeel Team",
   },
   {
@@ -128,7 +128,7 @@ export const blogPosts: BlogPost[] = [
     category: "Tips",
     date: "2026-02-17",
     readTime: "6 min read",
-    image: "/images/client/photo-08.jpeg",
+    image: "/images/blog/sink-drain.jpeg",
     author: "Aquafeel Team",
   },
   {
@@ -156,7 +156,7 @@ export const blogPosts: BlogPost[] = [
     category: "Tips",
     date: "2026-02-10",
     readTime: "5 min read",
-    image: "/images/client/photo-09.jpeg",
+    image: "/images/blog/commercial-tap.jpeg",
     author: "Aquafeel Team",
   },
   {
@@ -188,7 +188,7 @@ export const blogPosts: BlogPost[] = [
     category: "News",
     date: "2026-03-06",
     readTime: "5 min read",
-    image: "/images/client/photo-07.png",
+    image: "/images/blog/friends-cheers.jpeg",
     author: "Aquafeel Team",
   },
 ];

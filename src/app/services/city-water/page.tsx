@@ -24,6 +24,16 @@ import {
   Ruler,
   CheckCircle2,
   Phone,
+  Cpu,
+  Layers,
+  RefreshCw,
+  CircuitBoard,
+  Filter,
+  Zap,
+  DollarSign,
+  ShowerHead,
+  AlertTriangle,
+  Check,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -118,6 +128,34 @@ function FAQItem({
   );
 }
 
+/* ─────────────────── IMAGE BREAK ─────────────────── */
+
+function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+
+  return (
+    <section ref={ref} className="relative h-[45vh] min-h-[300px] overflow-hidden">
+      <motion.div style={{ y }} className="absolute inset-0 -inset-y-[10%]">
+        <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/50 via-[var(--color-primary-dark)]/20 to-[var(--color-primary-dark)]/50" />
+      <div className="relative z-10 h-full flex items-center justify-center px-6">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white text-center max-w-2xl leading-tight"
+        >
+          {text}
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
 /* ─────────────────── PAGE ─────────────────── */
 
 export default function CityWaterPage() {
@@ -198,6 +236,14 @@ export default function CityWaterPage() {
               "linear-gradient(135deg, #171751 0%, #1e3a5f 50%, #0e7490 100%)",
           }}
         >
+          {/* Video background */}
+          <div className="absolute inset-0 overflow-hidden">
+            <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+              <source src="/videos/water-vortex.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(23,23,81,0.82) 0%, rgba(30,58,95,0.75) 50%, rgba(14,116,144,0.7) 100%)" }} />
+          </div>
+
           {/* Subtle radial orb accents */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute -top-20 -right-40 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(6,182,212,0.12)_0%,transparent_70%)]" />
@@ -220,13 +266,6 @@ export default function CityWaterPage() {
                 className="hover:text-white/90 transition-colors"
               >
                 {p.breadcrumbHome}
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5" />
-              <Link
-                href="/services"
-                className="hover:text-white/90 transition-colors"
-              >
-                {p.breadcrumbServices}
               </Link>
               <ChevronRight className="w-3.5 h-3.5" />
               <span className="text-brand-cyan">{p.breadcrumbCurrent}</span>
@@ -397,6 +436,9 @@ export default function CityWaterPage() {
           </div>
         </section>
 
+        {/* ─── IMAGE BREAK: FAUCET ─── */}
+        <ImageBreak src="/images/water/clean-faucet.jpeg" alt="Clean filtered faucet water" text="Pure Water From Every Faucet" />
+
         {/* ─── HOW IT WORKS ─── */}
         <section className="relative py-20 md:py-28">
           {/* Background */}
@@ -479,6 +521,73 @@ export default function CityWaterPage() {
           </div>
         </section>
 
+        {/* ─── VORTECH TECHNOLOGY ─── */}
+        <section className="relative py-20 md:py-28">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0" style={{ background: "linear-gradient(170deg, rgba(37,39,114,0.04) 0%, transparent 40%, rgba(6,182,212,0.03) 100%)" }} />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
+            <svg className="absolute bottom-0 left-0 w-full h-32 opacity-[0.03]" viewBox="0 0 1440 128" preserveAspectRatio="none">
+              <path d="M0,64 C360,110 720,20 1080,64 C1260,90 1380,40 1440,64 L1440,128 L0,128 Z" fill="var(--color-primary)" />
+            </svg>
+          </div>
+          <div className="relative max-w-6xl mx-auto px-6">
+            <AnimatedSection className="text-center mb-14">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="inline-block mb-4 px-4 py-1.5 rounded-full bg-[var(--color-surface-alt)] text-[var(--color-secondary)] font-heading text-sm font-semibold tracking-wide uppercase">{p.vortechBadge}</motion.span>
+              <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-heading text-[var(--color-text-primary)]" style={{ fontSize: "var(--text-h2)" }}>{p.vortechHeadline}</motion.h2>
+              <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 max-w-2xl mx-auto font-body text-[var(--color-text-secondary)] text-lg leading-relaxed">{p.vortechDescription}</motion.p>
+            </AnimatedSection>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: Layers, title: p.vortechFeature1Title, desc: p.vortechFeature1Desc },
+                { icon: Cpu, title: p.vortechFeature2Title, desc: p.vortechFeature2Desc },
+                { icon: CircuitBoard, title: p.vortechFeature3Title, desc: p.vortechFeature3Desc },
+                { icon: RefreshCw, title: p.vortechFeature4Title, desc: p.vortechFeature4Desc },
+              ].map((feat, i) => (
+                <motion.div key={feat.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }} className="group relative p-6 rounded-2xl border border-[var(--color-border)] bg-white hover:shadow-xl hover:shadow-brand-cyan/5 hover:-translate-y-1 transition-all duration-300">
+                  <div className="absolute top-0 left-6 right-6 h-[2px] rounded-full bg-brand-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="w-11 h-11 rounded-xl bg-brand-cyan/10 flex items-center justify-center mb-4"><feat.icon className="w-5 h-5 text-brand-cyan" /></div>
+                  <h3 className="font-heading text-base font-semibold text-[var(--color-text-primary)] mb-2">{feat.title}</h3>
+                  <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed">{feat.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 4-STAGE FILTRATION ─── */}
+        <section className="relative py-20 md:py-28">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-surface)] via-white to-[var(--color-surface)]" />
+            <div className="absolute top-1/3 left-[5%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(6,182,212,0.04)_0%,transparent_70%)]" />
+          </div>
+          <div className="relative max-w-4xl mx-auto px-6">
+            <AnimatedSection className="text-center mb-14">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="inline-block mb-4 px-4 py-1.5 rounded-full bg-[var(--color-surface-alt)] text-[var(--color-secondary)] font-heading text-sm font-semibold tracking-wide uppercase">{p.filtrationBadge}</motion.span>
+              <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-heading text-[var(--color-text-primary)]" style={{ fontSize: "var(--text-h2)" }}>{p.filtrationHeadline}</motion.h2>
+              <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 max-w-2xl mx-auto font-body text-[var(--color-text-secondary)] text-lg leading-relaxed">{p.filtrationDescription}</motion.p>
+            </AnimatedSection>
+            <div className="space-y-6">
+              {[
+                { title: p.filtrationStage1Title, desc: p.filtrationStage1Desc, icon: Filter },
+                { title: p.filtrationStage2Title, desc: p.filtrationStage2Desc, icon: Droplets },
+                { title: p.filtrationStage3Title, desc: p.filtrationStage3Desc, icon: Sparkles },
+                { title: p.filtrationStage4Title, desc: p.filtrationStage4Desc, icon: CheckCircle2 },
+              ].map((stage, i) => (
+                <motion.div key={stage.title} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }} className="flex gap-5 items-start p-6 rounded-2xl border border-[var(--color-border)] bg-white hover:shadow-lg hover:shadow-brand-cyan/5 transition-all duration-300">
+                  <div className="relative z-10 w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center shrink-0"><stage.icon className="w-5 h-5 text-brand-cyan" /></div>
+                  <div>
+                    <h3 className="font-heading font-semibold text-lg text-[var(--color-text-primary)] mb-1.5">{stage.title}</h3>
+                    <p className="font-body text-[var(--color-text-secondary)] leading-relaxed">{stage.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── IMAGE BREAK: FILLING GLASS ─── */}
+        <ImageBreak src="/images/water/filling-glass.jpeg" alt="Filling a glass with clean water" text="Crystal Clear, Every Glass" />
+
         {/* ─── PRODUCT IMAGE ─── */}
         <section ref={imageRef} className="relative py-20 md:py-28">
           {/* Background */}
@@ -515,19 +624,120 @@ export default function CityWaterPage() {
               style={{ scale: imgScale, y: imgY }}
               className="relative rounded-3xl overflow-hidden shadow-2xl shadow-brand-navy/10 border border-[var(--color-border)]"
             >
-              <div className="relative aspect-[4/3] w-full bg-[var(--color-surface)]">
-                <Image
-                  src="/images/client/photo-01.jpeg"
-                  alt="Aquafeel City Water Filtration System -- whole-home water treatment unit"
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 900px"
-                  priority
-                />
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative aspect-[4/3] w-full bg-[var(--color-surface)]">
+                  <Image
+                    src="/images/client/photo-01.jpeg"
+                    alt="Aquafeel City Water Filtration System -- whole-home water treatment unit"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 450px"
+                    priority
+                  />
+                </div>
+                <div className="relative aspect-[4/3] w-full bg-[var(--color-surface)]">
+                  <Image
+                    src="/images/client/product-install.jpg"
+                    alt="Aquafeel whole house water system professionally installed in a home garage"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 450px"
+                  />
+                </div>
               </div>
               {/* Overlay accent */}
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-primary-dark)]/10 to-transparent pointer-events-none" />
             </motion.div>
+          </div>
+        </section>
+
+        {/* ─── CHLORAMINES CALLOUT ─── */}
+        <section className="relative py-16 md:py-20">
+          <div className="absolute inset-0 pointer-events-none"><div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(254,243,199,0.15) 0%, rgba(254,243,199,0.05) 100%)" }} /></div>
+          <div className="relative max-w-4xl mx-auto px-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }} className="p-8 md:p-10 rounded-2xl border-2 border-amber-200/60 bg-white shadow-lg shadow-amber-100/20">
+              <div className="flex items-start gap-5">
+                <div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center shrink-0"><AlertTriangle className="w-6 h-6 text-amber-600" /></div>
+                <div>
+                  <h3 className="font-heading font-bold text-xl text-[var(--color-text-primary)] mb-3">{p.chloraminesTitle}</h3>
+                  <p className="font-body text-[var(--color-text-secondary)] leading-relaxed">{p.chloraminesDescription}</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ─── CONTAMINANTS REMOVED ─── */}
+        <section className="relative py-20 md:py-28">
+          <div className="absolute inset-0 pointer-events-none"><div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(37,39,114,0.03) 0%, transparent 70%)" }} /><div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" /></div>
+          <div className="relative max-w-4xl mx-auto px-6">
+            <AnimatedSection className="text-center mb-12">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="inline-block mb-4 px-4 py-1.5 rounded-full bg-[var(--color-surface-alt)] text-[var(--color-secondary)] font-heading text-sm font-semibold tracking-wide uppercase">{p.contaminantsBadge}</motion.span>
+              <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-heading text-[var(--color-text-primary)]" style={{ fontSize: "var(--text-h2)" }}>{p.contaminantsHeadline}</motion.h2>
+              <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 max-w-2xl mx-auto font-body text-[var(--color-text-secondary)] text-lg">{p.contaminantsDescription}</motion.p>
+            </AnimatedSection>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="grid sm:grid-cols-2 gap-3">
+              {[p.contaminantChlorine, p.contaminantChloramines, p.contaminantSediment, p.contaminantVOCs, p.contaminantHardWater, p.contaminantScale, p.contaminantTaste, p.contaminantSOCs].map((item, i) => (
+                <motion.div key={item} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: i * 0.05 }} className="flex items-center gap-3 px-5 py-3.5 rounded-xl border border-[var(--color-border)] bg-white">
+                  <div className="w-5 h-5 rounded-full bg-brand-cyan/10 flex items-center justify-center shrink-0"><Check className="w-3 h-3 text-brand-cyan" /></div>
+                  <span className="font-body text-[var(--color-text-primary)] text-sm font-medium">{item}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ─── SPECS TABLE ─── */}
+        <section className="relative py-20 md:py-28">
+          <div className="absolute inset-0 pointer-events-none"><div className="absolute inset-0 bg-gradient-to-b from-[var(--color-surface)] to-white" /></div>
+          <div className="relative max-w-3xl mx-auto px-6">
+            <AnimatedSection className="text-center mb-12">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="inline-block mb-4 px-4 py-1.5 rounded-full bg-[var(--color-surface-alt)] text-[var(--color-secondary)] font-heading text-sm font-semibold tracking-wide uppercase">{p.specsBadge}</motion.span>
+              <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-heading text-[var(--color-text-primary)]" style={{ fontSize: "var(--text-h2)" }}>{p.specsHeadline}</motion.h2>
+            </AnimatedSection>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-2xl border border-[var(--color-border)] bg-white overflow-hidden shadow-lg shadow-brand-navy/5">
+              {[
+                { label: p.specType, value: p.specTypeValue },
+                { label: p.specStages, value: p.specStagesValue },
+                { label: p.specTech, value: p.specTechValue },
+                { label: p.specValve, value: p.specValveValue },
+                { label: p.specWarranty, value: p.specWarrantyValue },
+                { label: p.specOrigin, value: p.specOriginValue },
+                { label: p.specCertifications, value: p.specCertificationsValue },
+              ].map((row, i) => (
+                <div key={row.label} className={`flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 px-6 py-4 ${i % 2 === 0 ? "bg-[var(--color-surface)]" : "bg-white"}`}>
+                  <span className="font-heading font-semibold text-sm text-[var(--color-text-primary)] sm:w-1/3">{row.label}</span>
+                  <span className="font-body text-sm text-[var(--color-text-secondary)] sm:w-2/3">{row.value}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ─── SAVINGS GRID ─── */}
+        <section className="relative py-20 md:py-28">
+          <div className="absolute inset-0 pointer-events-none"><div className="absolute inset-0" style={{ background: "linear-gradient(145deg, rgba(6,182,212,0.04) 0%, transparent 50%, rgba(45,212,191,0.03) 100%)" }} /><div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" /></div>
+          <div className="relative max-w-6xl mx-auto px-6">
+            <AnimatedSection className="text-center mb-14">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="inline-block mb-4 px-4 py-1.5 rounded-full bg-[var(--color-surface-alt)] text-[var(--color-secondary)] font-heading text-sm font-semibold tracking-wide uppercase">{p.savingsBadge}</motion.span>
+              <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-heading text-[var(--color-text-primary)]" style={{ fontSize: "var(--text-h2)" }}>{p.savingsHeadline}</motion.h2>
+            </AnimatedSection>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: DollarSign, title: p.savings1Title, desc: p.savings1Desc },
+                { icon: ShowerHead, title: p.savings2Title, desc: p.savings2Desc },
+                { icon: Timer, title: p.savings3Title, desc: p.savings3Desc },
+                { icon: Zap, title: p.savings4Title, desc: p.savings4Desc },
+                { icon: Droplets, title: p.savings5Title, desc: p.savings5Desc },
+                { icon: ShieldCheck, title: p.savings6Title, desc: p.savings6Desc },
+              ].map((item, i) => (
+                <motion.div key={item.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.5, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }} className="group p-6 rounded-2xl border border-[var(--color-border)] bg-white hover:shadow-lg hover:shadow-brand-cyan/5 hover:-translate-y-1 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-lg bg-[var(--color-surface-alt)] flex items-center justify-center mb-4 group-hover:bg-brand-cyan/10 transition-colors"><item.icon className="w-5 h-5 text-[var(--color-secondary)]" /></div>
+                  <h3 className="font-heading text-base font-semibold text-[var(--color-text-primary)] mb-1.5">{item.title}</h3>
+                  <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -649,6 +859,9 @@ export default function CityWaterPage() {
 
         {/* ─── CTA ─── */}
         <section className="relative py-20 md:py-28 overflow-hidden">
+          <div className="absolute inset-0">
+            <Image src="/images/water/water-surface.jpeg" alt="" fill className="object-cover opacity-20" />
+          </div>
           <div
             className="absolute inset-0"
             style={{

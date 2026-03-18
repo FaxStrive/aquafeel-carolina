@@ -92,6 +92,7 @@ function ParallaxImage({
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 50vw"
+          loading="eager"
         />
       </motion.div>
     </div>
@@ -523,12 +524,88 @@ export default function AboutContent() {
               </motion.div>
             </motion.div>
 
-            {/* Image */}
-            <ParallaxImage
-              src="/images/client/photo-10.jpeg"
-              alt="Aquafeel Solutions certifications including NSF, WQA, and BBB"
-              className="relative aspect-[4/3] rounded-2xl shadow-2xl shadow-brand-navy/10"
-            />
+            {/* Certification Badges Grid */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="relative grid grid-cols-3 gap-3"
+            >
+              {/* NSF ANSI 42 */}
+              <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white border border-[var(--color-border)] shadow-md hover:shadow-lg transition-shadow duration-300">
+                <svg viewBox="0 0 120 120" className="w-14 h-14 mb-2" fill="none">
+                  <circle cx="60" cy="60" r="56" stroke="#1a2744" strokeWidth="3" />
+                  <circle cx="60" cy="60" r="48" stroke="#1a2744" strokeWidth="1.5" />
+                  <text x="60" y="52" textAnchor="middle" fill="#1a2744" fontWeight="900" fontSize="32" fontFamily="system-ui">NSF</text>
+                  <text x="60" y="72" textAnchor="middle" fill="#1a2744" fontWeight="600" fontSize="11" fontFamily="system-ui">ANSI 42</text>
+                  <text x="60" y="100" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="8" fontFamily="system-ui">CERTIFIED</text>
+                </svg>
+                <span className="font-heading text-xs font-bold text-[var(--color-text-primary)] text-center">Taste & Odor Reduction</span>
+              </div>
+
+              {/* NSF ANSI 44 */}
+              <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white border border-[var(--color-border)] shadow-md hover:shadow-lg transition-shadow duration-300">
+                <svg viewBox="0 0 120 120" className="w-14 h-14 mb-2" fill="none">
+                  <circle cx="60" cy="60" r="56" stroke="#1a2744" strokeWidth="3" />
+                  <circle cx="60" cy="60" r="48" stroke="#1a2744" strokeWidth="1.5" />
+                  <text x="60" y="52" textAnchor="middle" fill="#1a2744" fontWeight="900" fontSize="32" fontFamily="system-ui">NSF</text>
+                  <text x="60" y="72" textAnchor="middle" fill="#1a2744" fontWeight="600" fontSize="11" fontFamily="system-ui">ANSI 44</text>
+                  <text x="60" y="100" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="8" fontFamily="system-ui">CERTIFIED</text>
+                </svg>
+                <span className="font-heading text-xs font-bold text-[var(--color-text-primary)] text-center">Water Softening</span>
+              </div>
+
+              {/* NSF ANSI 61 & 372 */}
+              <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white border border-[var(--color-border)] shadow-md hover:shadow-lg transition-shadow duration-300">
+                <svg viewBox="0 0 120 120" className="w-14 h-14 mb-2" fill="none">
+                  <circle cx="60" cy="60" r="56" stroke="#1a2744" strokeWidth="3" />
+                  <circle cx="60" cy="60" r="48" stroke="#1a2744" strokeWidth="1.5" />
+                  <text x="60" y="48" textAnchor="middle" fill="#1a2744" fontWeight="900" fontSize="28" fontFamily="system-ui">NSF</text>
+                  <text x="60" y="66" textAnchor="middle" fill="#1a2744" fontWeight="600" fontSize="10" fontFamily="system-ui">ANSI 61 &amp; 372</text>
+                  <text x="60" y="100" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="8" fontFamily="system-ui">CERTIFIED</text>
+                </svg>
+                <span className="font-heading text-xs font-bold text-[var(--color-text-primary)] text-center">Safe Materials & Lead-Free</span>
+              </div>
+
+              {/* WQA */}
+              <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white border border-[var(--color-border)] shadow-md hover:shadow-lg transition-shadow duration-300">
+                <svg viewBox="0 0 120 120" className="w-14 h-14 mb-2" fill="none">
+                  <circle cx="60" cy="60" r="56" stroke="#c8a84e" strokeWidth="3" />
+                  <circle cx="60" cy="60" r="48" stroke="#c8a84e" strokeWidth="1.5" />
+                  <text x="60" y="40" textAnchor="middle" fill="#c8a84e" fontWeight="700" fontSize="8" fontFamily="system-ui">TESTED AND CERTIFIED</text>
+                  <text x="60" y="60" textAnchor="middle" fill="#1a2744" fontWeight="800" fontSize="14" fontFamily="system-ui">Water Quality</text>
+                  <text x="60" y="76" textAnchor="middle" fill="#1a2744" fontWeight="600" fontSize="9" fontFamily="system-ui">ASSOCIATION</text>
+                  <text x="60" y="100" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="8" fontFamily="system-ui">MEMBER</text>
+                </svg>
+                <span className="font-heading text-xs font-bold text-[var(--color-text-primary)] text-center">WQA Gold Seal Member</span>
+              </div>
+
+              {/* BBB A+ */}
+              <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white border border-[var(--color-border)] shadow-md hover:shadow-lg transition-shadow duration-300">
+                <svg viewBox="0 0 120 120" className="w-14 h-14 mb-2" fill="none">
+                  <rect x="8" y="8" width="104" height="104" rx="12" stroke="#005a78" strokeWidth="3" />
+                  <text x="60" y="50" textAnchor="middle" fill="#005a78" fontWeight="900" fontSize="30" fontFamily="system-ui">BBB</text>
+                  <text x="60" y="72" textAnchor="middle" fill="#005a78" fontWeight="700" fontSize="14" fontFamily="system-ui">A+ RATED</text>
+                  <text x="60" y="90" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="8" fontFamily="system-ui">ACCREDITED SINCE 2018</text>
+                </svg>
+                <span className="font-heading text-xs font-bold text-[var(--color-text-primary)] text-center">BBB Accredited Business</span>
+              </div>
+
+              {/* Made in USA */}
+              <div className="flex flex-col items-center justify-center p-4 rounded-xl bg-white border border-[var(--color-border)] shadow-md hover:shadow-lg transition-shadow duration-300">
+                <svg viewBox="0 0 120 120" className="w-14 h-14 mb-2" fill="none">
+                  <circle cx="60" cy="60" r="56" stroke="#b91c1c" strokeWidth="2" />
+                  <circle cx="60" cy="55" r="42" fill="#1a2744" />
+                  <text x="60" y="42" textAnchor="middle" fill="white" fontWeight="800" fontSize="11" fontFamily="system-ui">MADE IN</text>
+                  <text x="60" y="60" textAnchor="middle" fill="white" fontWeight="900" fontSize="18" fontFamily="system-ui">U.S.A.</text>
+                  <path d="M38 68 L48 66 L58 68 L68 66 L78 68" stroke="#b91c1c" strokeWidth="2" fill="none" />
+                  <path d="M38 72 L48 70 L58 72 L68 70 L78 72" stroke="white" strokeWidth="2" fill="none" />
+                  <text x="60" y="106" textAnchor="middle" fill="#1a2744" fontWeight="700" fontSize="9" fontFamily="system-ui">25-YEAR GUARANTEE</text>
+                </svg>
+                <span className="font-heading text-xs font-bold text-[var(--color-text-primary)] text-center">American Made Equipment</span>
+              </div>
+            </motion.div>
           </div>
         </div>
       </RevealSection>
@@ -630,8 +707,8 @@ export default function AboutContent() {
             {/* Image side */}
             <div className="order-2 lg:order-1">
               <ParallaxImage
-                src="/images/client/photo-04.jpeg"
-                alt="Aquafeel Solutions technician performing professional water testing"
+                src="/images/water/family-drinking.jpeg"
+                alt="Family drinking clean water in their kitchen"
                 className="relative aspect-[4/3] rounded-2xl shadow-2xl shadow-brand-navy/10"
               />
             </div>
@@ -681,8 +758,8 @@ export default function AboutContent() {
                 className="mt-8 relative aspect-[16/9] rounded-xl overflow-hidden shadow-lg shadow-brand-navy/10"
               >
                 <Image
-                  src="/images/client/photo-06.jpeg"
-                  alt="Aquafeel Solutions technician with customer in front of installed water system"
+                  src="/images/customers/happy-customers-1.jpg"
+                  alt="Happy customers with their installed Aquafeel water system"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 40vw"

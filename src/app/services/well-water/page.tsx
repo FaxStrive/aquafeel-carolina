@@ -29,6 +29,13 @@ import {
   Wind,
   Pipette,
   HeartPulse,
+  MapPin,
+  Mountain,
+  Waves,
+  Wheat,
+  Layers,
+  Cpu,
+  Flag,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -123,6 +130,34 @@ function FAQItem({
   );
 }
 
+/* ─────────────────── IMAGE BREAK ─────────────────── */
+
+function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+
+  return (
+    <section ref={ref} className="relative h-[45vh] min-h-[300px] overflow-hidden">
+      <motion.div style={{ y }} className="absolute inset-0 -inset-y-[10%]">
+        <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/50 via-[var(--color-primary-dark)]/20 to-[var(--color-primary-dark)]/50" />
+      <div className="relative z-10 h-full flex items-center justify-center px-6">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white text-center max-w-2xl leading-tight"
+        >
+          {text}
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
 /* ─────────────────── PAGE ─────────────────── */
 
 export default function WellWaterPage() {
@@ -196,11 +231,14 @@ export default function WellWaterPage() {
         <section
           ref={heroRef}
           className="relative min-h-[60vh] md:min-h-[70vh] flex items-center pt-32 pb-20"
-          style={{
-            background:
-              "linear-gradient(135deg, #171751 0%, #1e3a5f 50%, #0e7490 100%)",
-          }}
         >
+          {/* Video background */}
+          <div className="absolute inset-0 overflow-hidden">
+            <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+              <source src="/videos/water-black-bg.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(23,23,81,0.82) 0%, rgba(30,58,95,0.75) 50%, rgba(14,116,144,0.7) 100%)" }} />
+          </div>
           {/* Subtle radial orb accents */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute -top-20 -right-40 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(6,182,212,0.12)_0%,transparent_70%)]" />
@@ -223,13 +261,6 @@ export default function WellWaterPage() {
                 className="hover:text-white/90 transition-colors"
               >
                 {p.breadcrumbHome}
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5" />
-              <Link
-                href="/services"
-                className="hover:text-white/90 transition-colors"
-              >
-                {p.breadcrumbServices}
               </Link>
               <ChevronRight className="w-3.5 h-3.5" />
               <span className="text-brand-cyan">{p.breadcrumbWellWater}</span>
@@ -400,6 +431,9 @@ export default function WellWaterPage() {
           </div>
         </section>
 
+        {/* ─── IMAGE BREAK: OVERVIEW ─── */}
+        <ImageBreak src="/images/water/water-surface.jpeg" alt="Pristine water surface" text="Your Well Deserves Better" />
+
         {/* ─── HOW IT WORKS ─── */}
         <section className="relative py-20 md:py-28">
           {/* Background */}
@@ -558,6 +592,69 @@ export default function WellWaterPage() {
             </div>
           </div>
         </section>
+
+        {/* ─── RURAL NC/SC CONCERNS ─── */}
+        <section className="relative py-20 md:py-28">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0" style={{ background: "linear-gradient(170deg, rgba(37,39,114,0.04) 0%, transparent 40%, rgba(6,182,212,0.03) 100%)" }} />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
+          </div>
+          <div className="relative max-w-6xl mx-auto px-6">
+            <AnimatedSection className="text-center mb-14">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="inline-block mb-4 px-4 py-1.5 rounded-full bg-[var(--color-surface-alt)] text-[var(--color-secondary)] font-heading text-sm font-semibold tracking-wide uppercase">{p.ruralBadge}</motion.span>
+              <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-heading text-[var(--color-text-primary)]" style={{ fontSize: "var(--text-h2)" }}>{p.ruralHeadline}</motion.h2>
+              <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 max-w-2xl mx-auto font-body text-[var(--color-text-secondary)] text-lg leading-relaxed">{p.ruralDescription}</motion.p>
+            </AnimatedSection>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {[
+                { icon: MapPin, title: p.ruralRegion1Title, desc: p.ruralRegion1Desc },
+                { icon: Waves, title: p.ruralRegion2Title, desc: p.ruralRegion2Desc },
+                { icon: Mountain, title: p.ruralRegion3Title, desc: p.ruralRegion3Desc },
+                { icon: Wheat, title: p.ruralRegion4Title, desc: p.ruralRegion4Desc },
+              ].map((region, i) => (
+                <motion.div key={region.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }} className="group relative p-7 rounded-2xl border border-[var(--color-border)] bg-white hover:shadow-xl hover:shadow-brand-cyan/5 hover:-translate-y-1 transition-all duration-300">
+                  <div className="absolute top-0 left-7 right-7 h-[2px] rounded-full bg-brand-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center mb-5"><region.icon className="w-6 h-6 text-brand-cyan" /></div>
+                  <h3 className="font-heading text-lg font-semibold text-[var(--color-text-primary)] mb-2">{region.title}</h3>
+                  <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed">{region.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+            <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="mt-8 text-center font-body text-[var(--color-text-secondary)] italic max-w-2xl mx-auto">{p.ruralNote}</motion.p>
+          </div>
+        </section>
+
+        {/* ─── SYSTEM TECHNOLOGY ─── */}
+        <section className="relative py-20 md:py-28">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-surface)] via-white to-[var(--color-surface)]" />
+            <svg className="absolute bottom-0 left-0 w-full h-32 opacity-[0.03]" viewBox="0 0 1440 128" preserveAspectRatio="none"><path d="M0,64 C360,110 720,20 1080,64 C1260,90 1380,40 1440,64 L1440,128 L0,128 Z" fill="var(--color-primary)" /></svg>
+          </div>
+          <div className="relative max-w-6xl mx-auto px-6">
+            <AnimatedSection className="text-center mb-14">
+              <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="inline-block mb-4 px-4 py-1.5 rounded-full bg-[var(--color-surface-alt)] text-[var(--color-secondary)] font-heading text-sm font-semibold tracking-wide uppercase">{p.techBadge}</motion.span>
+              <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-heading text-[var(--color-text-primary)]" style={{ fontSize: "var(--text-h2)" }}>{p.techHeadline}</motion.h2>
+              <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 max-w-2xl mx-auto font-body text-[var(--color-text-secondary)] text-lg leading-relaxed">{p.techDescription}</motion.p>
+            </AnimatedSection>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { icon: Layers, title: p.techFeature1Title, desc: p.techFeature1Desc },
+                { icon: Cpu, title: p.techFeature2Title, desc: p.techFeature2Desc },
+                { icon: Flag, title: p.techFeature3Title, desc: p.techFeature3Desc },
+              ].map((feat, i) => (
+                <motion.div key={feat.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.5, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }} className="group relative p-7 rounded-2xl border border-[var(--color-border)] bg-white hover:shadow-xl hover:shadow-brand-cyan/5 hover:-translate-y-1 transition-all duration-300">
+                  <div className="absolute top-0 left-7 right-7 h-[2px] rounded-full bg-brand-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center mb-5"><feat.icon className="w-6 h-6 text-brand-cyan" /></div>
+                  <h3 className="font-heading text-lg font-semibold text-[var(--color-text-primary)] mb-2">{feat.title}</h3>
+                  <p className="font-body text-[var(--color-text-secondary)] leading-relaxed">{feat.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── IMAGE BREAK: SYSTEM TECHNOLOGY ─── */}
+        <ImageBreak src="/images/water/family-outdoor.jpeg" alt="Family enjoying outdoors" text="Clean Water for the Whole Family" />
 
         {/* ─── PRODUCT IMAGE ─── */}
         <section ref={imageRef} className="relative py-20 md:py-28">
@@ -736,6 +833,8 @@ export default function WellWaterPage() {
                 "linear-gradient(135deg, #171751 0%, #252772 40%, #0e7490 100%)",
             }}
           />
+          {/* Background image */}
+          <Image src="/images/water/water-droplet.jpeg" alt="" fill className="object-cover opacity-15 mix-blend-luminosity" />
           {/* Orbs */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute top-10 right-20 w-[300px] h-[300px] rounded-full bg-[radial-gradient(circle,rgba(45,212,191,0.1)_0%,transparent_70%)]" />

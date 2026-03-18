@@ -25,6 +25,8 @@ import {
   Pipette,
   Container,
   Milk,
+  Check,
+  Atom,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -48,13 +50,16 @@ function AlkalineHero() {
       ref={ref}
       className="relative min-h-[460px] flex items-center overflow-hidden"
     >
-      {/* Gradient background */}
+      {/* Video + Gradient background */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 -top-20">
+        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+          <source src="/videos/water-flowing-white.mp4" type="video/mp4" />
+        </video>
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, #171751 0%, #252772 30%, #2DD4BF 100%)",
+              "linear-gradient(135deg, rgba(23,23,81,0.82) 0%, rgba(37,39,114,0.78) 30%, rgba(45,212,191,0.75) 100%)",
           }}
         />
         {/* Animated orbs */}
@@ -100,13 +105,6 @@ function AlkalineHero() {
         >
           <Link href="/" className="hover:text-white/80 transition-colors">
             {p.breadcrumbHome}
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <Link
-            href="/services"
-            className="hover:text-white/80 transition-colors"
-          >
-            {p.breadcrumbServices}
           </Link>
           <ChevronRight className="w-3.5 h-3.5" />
           <span className="text-white/80">{p.breadcrumbCurrent}</span>
@@ -156,6 +154,34 @@ function AlkalineHero() {
 
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
+    </section>
+  );
+}
+
+/* ─────────────────── IMAGE BREAK ─────────────────── */
+
+function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+
+  return (
+    <section ref={ref} className="relative h-[45vh] min-h-[300px] overflow-hidden">
+      <motion.div style={{ y }} className="absolute inset-0 -inset-y-[10%]">
+        <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/50 via-[var(--color-primary-dark)]/20 to-[var(--color-primary-dark)]/50" />
+      <div className="relative z-10 h-full flex items-center justify-center px-6">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white text-center max-w-2xl leading-tight"
+        >
+          {text}
+        </motion.p>
+      </div>
     </section>
   );
 }
@@ -422,6 +448,156 @@ function ProductImage() {
   );
 }
 
+/* ─────────────────── ALKALINE REMINERALIZATION DETAIL ─────────────────── */
+
+function AlkalineDetail() {
+  const { t } = useI18n();
+  const p = t.alkalineRoPage;
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  const minerals = [
+    { name: p.alkalineMineral1, desc: p.alkalineMineral1Desc, icon: Atom },
+    { name: p.alkalineMineral2, desc: p.alkalineMineral2Desc, icon: Sparkles },
+    { name: p.alkalineMineral3, desc: p.alkalineMineral3Desc, icon: ShieldCheck },
+  ];
+
+  return (
+    <section ref={ref} className="relative py-20 sm:py-28 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0" style={{ background: "linear-gradient(170deg, rgba(45,212,191,0.05) 0%, transparent 50%, rgba(37,39,114,0.03) 100%)" }} />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
+      </div>
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-14">
+          <span className="inline-block font-heading font-semibold text-sm uppercase tracking-wider text-brand-cyan mb-3">{p.alkalineBadge}</span>
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-[var(--color-text-primary)]">{p.alkalineHeadline}</h2>
+          <p className="font-body text-[var(--color-text-secondary)] text-lg mt-4 max-w-2xl mx-auto">{p.alkalineDescription}</p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-10">
+          {minerals.map((mineral, i) => (
+            <motion.div key={mineral.name} initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.15 + i * 0.1, ease: [0.22, 1, 0.36, 1] }} className="group relative p-7 rounded-2xl border border-[var(--color-border)] bg-white hover:shadow-xl hover:shadow-brand-cyan/5 hover:-translate-y-1 transition-all duration-300">
+              <div className="absolute top-0 left-7 right-7 h-[2px] rounded-full bg-brand-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center mb-5"><mineral.icon className="w-6 h-6 text-brand-cyan" /></div>
+              <h3 className="font-heading font-bold text-xl text-[var(--color-text-primary)] mb-2">{mineral.name}</h3>
+              <p className="font-body text-[var(--color-text-secondary)] leading-relaxed">{mineral.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* pH Output Callout */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.5 }} className="p-8 md:p-10 rounded-2xl border-2 border-brand-cyan/20 bg-white shadow-lg shadow-brand-cyan/5">
+          <div className="flex items-start gap-5">
+            <div className="w-14 h-14 rounded-xl bg-brand-cyan/10 flex items-center justify-center shrink-0"><GlassWater className="w-7 h-7 text-brand-cyan" /></div>
+            <div>
+              <h3 className="font-heading font-bold text-xl text-[var(--color-text-primary)] mb-2">{p.alkalinePh}</h3>
+              <p className="font-body text-[var(--color-text-secondary)] leading-relaxed">{p.alkalinePhDesc}</p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────── CONTAMINANTS + SPECS ─────────────────── */
+
+function ContaminantsAndSpecs() {
+  const { t } = useI18n();
+  const p = t.alkalineRoPage;
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  const contaminants = [
+    p.contaminantArsenic, p.contaminantBarium, p.contaminantCadmium,
+    p.contaminantChromium6, p.contaminantChromium3, p.contaminantCysts,
+    p.contaminantFluoride, p.contaminantLead, p.contaminantNitrate,
+    p.contaminantPerchlorate, p.contaminantRadium, p.contaminantSelenium,
+    p.contaminantTDS, p.contaminantTurbidity,
+  ];
+
+  const specs = [
+    { label: p.specType, value: p.specTypeValue },
+    { label: p.specStages, value: p.specStagesValue },
+    { label: p.specProduction, value: p.specProductionValue },
+    { label: p.specTank, value: p.specTankValue },
+    { label: p.specPh, value: p.specPhValue },
+    { label: p.specMinerals, value: p.specMineralsValue },
+    { label: p.specFaucet, value: p.specFaucetValue },
+    { label: p.specCert, value: p.specCertValue },
+  ];
+
+  return (
+    <section ref={ref} className="relative py-20 sm:py-28 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none"><div className="absolute inset-0 bg-gradient-to-b from-[var(--color-surface)] to-white" /></div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Contaminants */}
+          <motion.div initial={{ opacity: 0, x: -30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
+            <span className="inline-block font-heading font-semibold text-sm uppercase tracking-wider text-brand-cyan mb-3">{p.contaminantsBadge}</span>
+            <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[var(--color-text-primary)] mb-3">{p.contaminantsHeadline}</h3>
+            <p className="font-body text-[var(--color-text-secondary)] mb-6 leading-relaxed">{p.contaminantsDescription}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {contaminants.map((item, i) => (
+                <motion.div key={item} initial={{ opacity: 0, x: -10 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.3, delay: 0.2 + i * 0.03 }} className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-[var(--color-border)] bg-white">
+                  <div className="w-4 h-4 rounded-full bg-brand-cyan/10 flex items-center justify-center shrink-0"><Check className="w-2.5 h-2.5 text-brand-cyan" /></div>
+                  <span className="font-body text-[var(--color-text-primary)] text-sm">{item}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Specs Table */}
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}>
+            <span className="inline-block font-heading font-semibold text-sm uppercase tracking-wider text-brand-cyan mb-3">{p.specsBadge}</span>
+            <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[var(--color-text-primary)] mb-6">{p.specsHeadline}</h3>
+            <div className="rounded-2xl border border-[var(--color-border)] bg-white overflow-hidden shadow-lg shadow-brand-navy/5">
+              {specs.map((row, i) => (
+                <div key={row.label} className={`flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 px-6 py-3.5 ${i % 2 === 0 ? "bg-[var(--color-surface)]" : "bg-white"}`}>
+                  <span className="font-heading font-semibold text-sm text-[var(--color-text-primary)] sm:w-2/5">{row.label}</span>
+                  <span className="font-body text-sm text-[var(--color-text-secondary)] sm:w-3/5">{row.value}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────── HEALTH BENEFITS ─────────────────── */
+
+function HealthBenefits() {
+  const { t } = useI18n();
+  const p = t.alkalineRoPage;
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+
+  const benefits = [p.health1, p.health2, p.health3, p.health4, p.health5, p.health6];
+
+  return (
+    <section ref={ref} className="relative py-20 sm:py-28 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none"><div className="absolute inset-0" style={{ background: "linear-gradient(145deg, rgba(6,182,212,0.04) 0%, transparent 50%, rgba(45,212,191,0.03) 100%)" }} /><div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" /></div>
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-12">
+          <span className="inline-block font-heading font-semibold text-sm uppercase tracking-wider text-brand-cyan mb-3">{p.healthBadge}</span>
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-[var(--color-text-primary)]">{p.healthHeadline}</h2>
+        </motion.div>
+        <div className="space-y-3">
+          {benefits.map((item, i) => (
+            <motion.div key={item} initial={{ opacity: 0, x: -15 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.4, delay: 0.15 + i * 0.06 }} className="flex items-center gap-4 p-5 rounded-xl border border-[var(--color-border)] bg-white hover:shadow-md hover:shadow-brand-cyan/5 transition-shadow duration-300">
+              <div className="w-8 h-8 rounded-full bg-brand-cyan/10 flex items-center justify-center shrink-0"><Heart className="w-4 h-4 text-brand-cyan" /></div>
+              <span className="font-body text-[var(--color-text-primary)] font-medium">{item}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─────────────────── BENEFITS GRID ─────────────────── */
 
 function BenefitsGrid() {
@@ -670,6 +846,7 @@ function CTASection() {
               "linear-gradient(135deg, #171751 0%, #252772 50%, #0e7490 100%)",
           }}
         />
+        <Image src="/images/water/water-surface.jpeg" alt="" fill className="object-cover opacity-15 mix-blend-luminosity" />
         <motion.div
           animate={{
             scale: [1, 1.15, 1],
@@ -744,8 +921,13 @@ export default function AlkalineROPage() {
       <main>
         <AlkalineHero />
         <Overview />
+        <ImageBreak src="/images/water/girl-drinking.jpeg" alt="Girl drinking pure alkaline water" text="Pure, Alkaline Hydration" />
         <HowItWorks />
         <ProductImage />
+        <AlkalineDetail />
+        <ImageBreak src="/images/water/passing-glass.jpeg" alt="Passing a glass of clean water" text="Water the Way Nature Intended" />
+        <ContaminantsAndSpecs />
+        <HealthBenefits />
         <BenefitsGrid />
         <FAQSection />
         <CTASection />

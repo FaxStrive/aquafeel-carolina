@@ -125,6 +125,34 @@ function FAQItem({
   );
 }
 
+/* ─────────────────── IMAGE BREAK ─────────────────── */
+
+function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+
+  return (
+    <section ref={ref} className="relative h-[45vh] min-h-[300px] overflow-hidden">
+      <motion.div style={{ y }} className="absolute inset-0 -inset-y-[10%]">
+        <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/50 via-[var(--color-primary-dark)]/20 to-[var(--color-primary-dark)]/50" />
+      <div className="relative z-10 h-full flex items-center justify-center px-6">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white text-center max-w-2xl leading-tight"
+        >
+          {text}
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
 /* ─────────────────── PAGE ─────────────────── */
 
 export default function CommercialPage() {
@@ -190,11 +218,14 @@ export default function CommercialPage() {
         <section
           ref={heroRef}
           className="relative min-h-[60vh] md:min-h-[70vh] flex items-center pt-32 pb-20"
-          style={{
-            background:
-              "linear-gradient(135deg, #171751 0%, #1e3a5f 50%, #0e7490 100%)",
-          }}
         >
+          {/* Video background */}
+          <div className="absolute inset-0 overflow-hidden">
+            <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+              <source src="/videos/hero-water.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(23,23,81,0.82) 0%, rgba(30,58,95,0.75) 50%, rgba(14,116,144,0.7) 100%)" }} />
+          </div>
           {/* Subtle radial orb accents */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute -top-20 -right-40 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(6,182,212,0.12)_0%,transparent_70%)]" />
@@ -214,10 +245,6 @@ export default function CommercialPage() {
             >
               <Link href="/" className="hover:text-white/90 transition-colors">
                 {p.breadcrumbHome}
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5" />
-              <Link href="/services" className="hover:text-white/90 transition-colors">
-                {p.breadcrumbServices}
               </Link>
               <ChevronRight className="w-3.5 h-3.5" />
               <span className="text-brand-cyan">{p.breadcrumbCommercial}</span>
@@ -318,6 +345,9 @@ export default function CommercialPage() {
           </div>
         </section>
 
+        {/* ─── IMAGE BREAK: INDUSTRIES ─── */}
+        <ImageBreak src="/images/water/happy-family.jpeg" alt="Happy customers" text="Trusted by Businesses Across the Carolinas" />
+
         {/* ─── WHY COMMERCIAL CLIENTS CHOOSE US ─── */}
         <section className="relative py-20 md:py-28">
           <div className="absolute inset-0 pointer-events-none">
@@ -411,6 +441,9 @@ export default function CommercialPage() {
           </div>
         </section>
 
+        {/* ─── IMAGE BREAK: COMMERCIAL PROCESS ─── */}
+        <ImageBreak src="/images/water/sink-water.jpeg" alt="Commercial sink water" text="Commercial-Grade Water Purification" />
+
         {/* ─── PRODUCT IMAGE ─── */}
         <section ref={imageRef} className="relative py-20 md:py-28">
           <div className="absolute inset-0 pointer-events-none">
@@ -474,6 +507,8 @@ export default function CommercialPage() {
         {/* ─── CTA ─── */}
         <section className="relative py-20 md:py-28 overflow-hidden">
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #171751 0%, #252772 40%, #0e7490 100%)" }} />
+          {/* Background image */}
+          <Image src="/images/water/water-droplet.jpeg" alt="" fill className="object-cover opacity-15 mix-blend-luminosity" />
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute top-10 right-20 w-[300px] h-[300px] rounded-full bg-[radial-gradient(circle,rgba(45,212,191,0.1)_0%,transparent_70%)]" />
             <div className="absolute -bottom-10 -left-10 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent_70%)]" />
