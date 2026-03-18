@@ -109,8 +109,8 @@ export default function WaterQuality() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-brand-navy/10">
               <Image
-                src="/images/client/photo-08.jpeg"
-                alt="Aquafeel Solutions water quality testing demonstration"
+                src="/images/customers/happy-customers-1.jpg"
+                alt="Happy Aquafeel customers with their installed water system"
                 width={640}
                 height={480}
                 className="w-full h-auto object-cover"

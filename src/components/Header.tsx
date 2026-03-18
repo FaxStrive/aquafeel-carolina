@@ -10,7 +10,6 @@ import { useI18n } from "@/lib/i18n/context";
 
 const serviceLinks = [
   { href: "/services/city-water", labelKey: "cityWater" as const },
-  { href: "/services/reverse-osmosis", labelKey: "reverseOsmosis" as const },
   { href: "/services/alkaline-ro", labelKey: "alkalineRo" as const },
   { href: "/services/well-water", labelKey: "wellWater" as const },
   { href: "/services/commercial", labelKey: "commercial" as const },
@@ -121,8 +120,7 @@ export default function Header() {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <Link
-                  href="/services"
+                <button
                   className={`flex items-center gap-1 ${navLinkClass}`}
                 >
                   {t.nav.services}
@@ -131,7 +129,7 @@ export default function Header() {
                       servicesOpen ? "rotate-180" : ""
                     }`}
                   />
-                </Link>
+                </button>
 
                 <AnimatePresence>
                   {servicesOpen && (
@@ -160,14 +158,6 @@ export default function Header() {
                             </motion.span>
                           </Link>
                         ))}
-                        <div className="mx-4 my-1.5 border-t border-[var(--color-border)]" />
-                        <Link
-                          href="/services"
-                          onClick={() => setServicesOpen(false)}
-                          className="block px-5 py-2.5 font-heading text-sm font-semibold text-brand-cyan hover:bg-[var(--color-surface)] transition-colors duration-150"
-                        >
-                          {t.nav.viewAllServices}
-                        </Link>
                       </div>
                     </motion.div>
                   )}
@@ -175,7 +165,7 @@ export default function Header() {
               </div>
 
               <Link href="/gallery" className={navLinkClass}>{t.nav.gallery}</Link>
-              <Link href="/financing" className={navLinkClass}>{t.nav.financing}</Link>
+              <Link href="/careers" className={navLinkClass}>{t.nav.careers}</Link>
               <Link href="/blog" className={navLinkClass}>Blog</Link>
               <Link href="/contact" className={navLinkClass}>{t.nav.contact}</Link>
             </nav>
@@ -273,13 +263,6 @@ export default function Header() {
                             {t.services[link.labelKey]}
                           </Link>
                         ))}
-                        <Link
-                          href="/services"
-                          onClick={() => setMobileOpen(false)}
-                          className="font-heading font-semibold text-lg text-brand-cyan"
-                        >
-                          {t.nav.viewAll}
-                        </Link>
                       </div>
                     </motion.div>
                   )}
@@ -288,7 +271,7 @@ export default function Header() {
 
               {[
                 { href: "/gallery", label: t.nav.gallery },
-                { href: "/financing", label: t.nav.financing },
+                { href: "/careers", label: t.nav.careers },
                 { href: "/warranty", label: t.nav.warranty },
                 { href: "/blog", label: "Blog" },
                 { href: "/careers", label: t.nav.careers },

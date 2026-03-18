@@ -22,7 +22,6 @@ export default function Footer() {
 
   const serviceLinks = [
     { href: "/services/city-water", label: t.services.cityWater },
-    { href: "/services/reverse-osmosis", label: t.services.reverseOsmosis },
     { href: "/services/alkaline-ro", label: t.services.alkalineRo },
     { href: "/services/well-water", label: t.services.wellWater },
     { href: "/services/commercial", label: t.services.commercial },

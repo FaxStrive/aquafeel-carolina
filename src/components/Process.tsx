@@ -236,8 +236,8 @@ export default function Process() {
       icon: FlaskConical,
       title: t.process.step2Title,
       description: t.process.step2Desc,
-      imageSrc: "/images/water/girl-examining.jpeg",
-      imageAlt: "Girl examining water with magnifying glass",
+      imageSrc: "/images/water/technician-consult.jpeg",
+      imageAlt: "Technician showing water test results to homeowner",
     },
     {
       number: "03",

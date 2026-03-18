@@ -468,20 +468,6 @@ function OpenPositions() {
       ],
     },
     {
-      title: t.careersPage.position2Title,
-      type: t.careersPage.position2Type,
-      location: t.careersPage.position2Location,
-      summary: t.careersPage.position2Summary,
-      description: t.careersPage.position2Description,
-      requirements: [
-        t.careersPage.position2Req1,
-        t.careersPage.position2Req2,
-        t.careersPage.position2Req3,
-        t.careersPage.position2Req4,
-        t.careersPage.position2Req5,
-      ],
-    },
-    {
       title: t.careersPage.position3Title,
       type: t.careersPage.position3Type,
       location: t.careersPage.position3Location,

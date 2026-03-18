@@ -17,27 +17,57 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Aquafeel Solutions Carolina | Water Quality Testing & Purification",
+  title: {
+    default: "Aquafeel Solutions Carolina | Free Water Testing & Purification",
+    template: "%s | Aquafeel Solutions Carolina",
+  },
   description:
-    "Professional water quality testing and purification solutions for homes and businesses. Locally owned and veteran operated. 18 years of experience. Free in-home water consultations. NSF certified systems.",
+    "Free in-home water testing for North Carolina and South Carolina families. NSF-certified whole-house water purification with Vortech technology. 25-year guarantee. Made in USA. BBB A+ rated. Schedule your free water test today.",
   keywords: [
-    "water quality testing",
-    "water purification",
-    "water filtration",
-    "reverse osmosis",
-    "water softener",
-    "well water treatment",
-    "commercial water filtration",
-    "North Carolina",
+    "free water test North Carolina",
+    "water purification NC",
+    "water filtration Raleigh",
+    "water softener Charlotte",
+    "well water treatment NC",
+    "reverse osmosis system",
+    "alkaline water system",
+    "Aquafeel Solutions",
+    "whole house water filter",
     "water testing near me",
-    "veteran owned water company",
+    "NSF certified water system",
+    "Vortech water technology",
   ],
+  metadataBase: new URL("https://aquafeelcarolina.com"),
   openGraph: {
     title: "Aquafeel Solutions Carolina | Your Clean Water Heroes",
     description:
-      "Just Because It's Clear Doesn't Mean It's Clean. Locally owned and veteran operated. Professional water testing and purification for North Carolina families and businesses.",
+      "Just Because It's Clear Doesn't Mean It's Clean. Free professional water testing for Carolina families. NSF-certified systems with 25-year guarantee. Made in USA.",
     type: "website",
     locale: "en_US",
+    siteName: "Aquafeel Solutions Carolina",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Aquafeel Solutions Carolina - Clean Water Heroes",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aquafeel Solutions Carolina | Free Water Testing",
+    description:
+      "Free professional water testing for NC & SC families. NSF-certified systems with 25-year guarantee. Made in USA.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

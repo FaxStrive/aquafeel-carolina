@@ -120,18 +120,16 @@
   animation: cta-pulse-glow 3s ease-in-out infinite;
 }
 
-/* Page transition */
+/* Page transition — opacity only to avoid breaking fixed positioning */
 @keyframes page-enter {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.99);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
 
 .animate-page-enter {
-  animation: page-enter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: page-enter 0.35s ease-out forwards;
 }
