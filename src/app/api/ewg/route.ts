@@ -36,25 +36,41 @@ export async function GET(req: NextRequest) {
 
   try {
     // Step 1: Search by zip to find the largest utility (most relevant)
+    const controller1 = new AbortController();
+    const timeout1 = setTimeout(() => controller1.abort(), 10000);
     const searchRes = await fetch(
       `https://www.ewg.org/tapwater/search-results.php?zip5=${zip}&searchtype=zip`,
       {
         headers: {
           "User-Agent":
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          Accept:
+            "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "Accept-Language": "en-US,en;q=0.9",
         },
+        signal: controller1.signal,
       }
     );
+    clearTimeout(timeout1);
 
     if (!searchRes.ok) {
       return NextResponse.json(
-        { error: "Failed to reach EWG database" },
+        { error: "Failed to reach EWG database. Please try again." },
         { status: 502 }
       );
     }
 
     const searchHtml = await searchRes.text();
     const $search = cheerio.load(searchHtml);
+
+    // Check if EWG says the zip is invalid (returns 50 largest systems nationally)
+    const subText = $search(".utilities-sub-text").text().toLowerCase();
+    if (subText.includes("invalid zip") || subText.includes("invalid zipcode")) {
+      return NextResponse.json(
+        { error: "No water data found for this zip code. Try a nearby zip code." },
+        { status: 404 }
+      );
+    }
 
     // Get the featured utility first (usually the largest/primary one)
     let pwsCode = "";
@@ -67,7 +83,7 @@ export async function GET(req: NextRequest) {
       pwsCode = params.get("pws") || "";
     }
 
-    // Fallback: find largest utility from table
+    // Fallback: find utility from table, preferring local results
     if (!pwsCode) {
       let maxPop = 0;
       $search('a[href*="system.php?pws="]').each((_, el) => {
@@ -91,15 +107,22 @@ export async function GET(req: NextRequest) {
     }
 
     // Step 2: Fetch the utility's contaminant report
+    const controller2 = new AbortController();
+    const timeout2 = setTimeout(() => controller2.abort(), 10000);
     const systemRes = await fetch(
       `https://www.ewg.org/tapwater/system.php?pws=${pwsCode}`,
       {
         headers: {
           "User-Agent":
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          Accept:
+            "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "Accept-Language": "en-US,en;q=0.9",
         },
+        signal: controller2.signal,
       }
     );
+    clearTimeout(timeout2);
 
     if (!systemRes.ok) {
       return NextResponse.json(
