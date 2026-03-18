@@ -160,7 +160,8 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
 
 export default function CityWaterPage() {
   const { t } = useI18n();
-  const p = t.cityWaterPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = t.cityWaterPage as any;
 
   const heroRef = useRef(null);
   const { scrollYProgress: heroScroll } = useScroll({
