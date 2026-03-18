@@ -125,7 +125,7 @@ function FAQItem({
 
 /* ─────────────────── IMAGE BREAK ─────────────────── */
 
-function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string }) {
+function ImageBreak({ src, alt, text, position = "object-center" }: { src: string; alt: string; text: string; position?: string }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
@@ -133,7 +133,7 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
   return (
     <section ref={ref} className="relative h-[45vh] min-h-[300px] overflow-hidden">
       <motion.div style={{ y }} className="absolute inset-0 -inset-y-[10%]">
-        <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
+        <Image src={src} alt={alt} fill className={`object-cover ${position}`} sizes="100vw" />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/70 via-[var(--color-primary-dark)]/50 to-[var(--color-primary-dark)]/70" />
       <div className="relative z-10 h-full flex items-center justify-center px-6">
@@ -580,7 +580,7 @@ export default function WellWaterPage() {
         </section>
 
         {/* ─── IMAGE BREAK: FAMILY ─── */}
-        <ImageBreak src="/images/water/family-outdoor.jpeg" alt="Family enjoying outdoors" text="Clean Water for the Whole Family" />
+        <ImageBreak src="/images/water/family-outdoor.jpeg" alt="Family enjoying outdoors" text="Clean Water for the Whole Family" position="object-top" />
 
         {/* ─── BENEFITS GRID ─── */}
         <section className="relative py-20 md:py-28">

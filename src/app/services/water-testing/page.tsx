@@ -176,7 +176,7 @@ function Hero() {
             <ArrowRight className="w-4 h-4" />
           </Link>
           <a
-            href="tel:+19193516887"
+            href="tel:+19842123558"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/20 text-white font-heading font-medium text-base hover:bg-white/10 transition-all duration-200"
           >
             <Phone className="w-4 h-4" />
@@ -660,7 +660,7 @@ function CTA() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="tel:+19193516887"
+              href="tel:+19842123558"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/20 text-white font-heading font-medium text-base hover:bg-white/10 transition-all duration-200"
             >
               <Phone className="w-4 h-4" />

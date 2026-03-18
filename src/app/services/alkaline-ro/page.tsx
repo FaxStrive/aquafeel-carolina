@@ -13,6 +13,7 @@ import Link from "next/link";
 import {
   ChevronRight,
   ArrowRight,
+  Phone,
   Droplets,
   Sparkles,
   Heart,
@@ -139,15 +140,22 @@ function AlkalineHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-8"
+          className="mt-8 flex flex-wrap gap-4"
         >
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-[var(--color-accent-light)] text-[var(--color-primary-dark)] font-heading font-bold text-base hover:bg-[var(--color-accent)] transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg shadow-teal-500/20"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-accent-light)] text-[var(--color-primary-dark)] font-heading font-semibold text-base hover:brightness-110 transition-all hover:shadow-lg hover:shadow-brand-cyan/20"
           >
             {p.heroCta}
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4" />
           </Link>
+          <a
+            href="tel:+19842123558"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/25 text-white font-heading font-semibold text-base hover:bg-white/10 transition-all"
+          >
+            <Phone className="w-4 h-4" />
+            (984) 212-3558
+          </a>
         </motion.div>
       </motion.div>
 

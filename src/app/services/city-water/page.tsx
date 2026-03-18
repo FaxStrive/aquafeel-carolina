@@ -120,7 +120,7 @@ function FAQItem({
 
 /* ─────────────────── IMAGE BREAK ─────────────────── */
 
-function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string }) {
+function ImageBreak({ src, alt, text, position = "object-center" }: { src: string; alt: string; text: string; position?: string }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
@@ -128,7 +128,7 @@ function ImageBreak({ src, alt, text }: { src: string; alt: string; text: string
   return (
     <section ref={ref} className="relative h-[45vh] min-h-[300px] overflow-hidden">
       <motion.div style={{ y }} className="absolute inset-0 -inset-y-[10%]">
-        <Image src={src} alt={alt} fill className="object-cover" sizes="100vw" />
+        <Image src={src} alt={alt} fill className={`object-cover ${position}`} sizes="100vw" />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary-dark)]/70 via-[var(--color-primary-dark)]/50 to-[var(--color-primary-dark)]/70" />
       <div className="relative z-10 h-full flex items-center justify-center px-6">
@@ -428,7 +428,7 @@ export default function CityWaterPage() {
         </section>
 
         {/* ─── IMAGE BREAK: FAUCET ─── */}
-        <ImageBreak src="/images/water/clean-faucet.jpeg" alt="Clean filtered faucet water" text="Pure Water From Every Faucet" />
+        <ImageBreak src="/images/water/clean-faucet.jpeg" alt="Clean filtered faucet water" text="Pure Water From Every Faucet" position="object-bottom" />
 
         {/* ─── HOW IT WORKS ─── */}
         <section className="relative py-20 md:py-28">
@@ -567,7 +567,7 @@ export default function CityWaterPage() {
                     src="/images/client/product-install.jpg"
                     alt="Aquafeel whole house water system professionally installed in a home garage"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     sizes="(max-width: 768px) 100vw, 450px"
                   />
                 </div>
